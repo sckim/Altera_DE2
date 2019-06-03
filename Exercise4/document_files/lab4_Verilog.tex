@@ -1,0 +1,146 @@
+\documentclass[psfig,10pt,fullpage]{article}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
+\addtolength{\evensidemargin}{0.75in}
+\raggedbottom
+\usepackage{psfig,float,times}
+
+\begin{document}
+
+~\\
+\centerline{\huge Laboratory Exercise 4}
+~\\
+\centerline{\large Counters}
+~\\
+~\\
+
+This is an exercise in using counters.
+
+~\\
+\noindent
+{\bf Part I}
+
+~\\
+\noindent
+Consider the circuit in Figure 1. It is a 4-bit synchronous counter which uses four
+T-type flip-flops. The counter increments its count on each positive edge of the clock
+if the Enable signal is asserted. The counter is reset to 0 by using the Reset signal.
+You are to implement a 16-bit counter of this type.
+~\\
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure4.1.eps}}}
+\end{figure}
+\centerline{Figure 1.  A 4-bit counter.}
+~\\
+
+\begin{enumerate}
+\item Write a Verilog file that defines a 16-bit counter by using the structure
+depicted in Figure 1. Your code should include a T flip-flop module that is instantiated
+16 times to create the counter. Compile the circuit. How many logic elements (LEs) are 
+used to implement your circuit? What is the maximum frequency, {\it Fmax}, at which
+your circuit can be operated?
+\item Simulate your circuit to verify its correctness.
+\item Augment your Verilog file to use the pushbutton $KEY_0$ as the {\it Clock}
+input, switches $SW_1$ and $SW_0$ as {\it Enable} and {\it Reset} inputs, and
+7-segment displays {\it HEX3-0} to display the hexadecimal count as your circuit
+operates. Make the necessary pin assignments needed to implement the circuit on the DE2
+board, and compile the circuit.
+\item Download your circuit into the FPGA chip and test its functionality by operating
+the implemented switches.
+\item Implement a 4-bit version of your circuit and use the Quartus II RTL Viewer to
+see how Quartus II software synthesized your circuit. What are the differences in
+comparison with Figure 1?
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part II}
+
+~\\
+\noindent
+Simplify your Verilog code so that the counter specification is based on
+the Verilog statement
+$$
+{\rm Q <= Q + 1;}
+$$
+\noindent
+Compile a 16-bit version of this counter and compare the number of LEs needed
+and the {\it Fmax} that is attainable.
+Use the RTL Viewer to see the structure of this implementation and comment on
+the differences with the design from Part I.
+
+~\\
+\noindent
+{\bf Part III}
+
+~\\
+\noindent
+Use an LPM from the Library of Parameterized modules to implement a 16-bit 
+counter. Choose the LPM options to be consistent with the above design, i.e.
+with enable and synchronous clear.
+How does this version compare with the previous designs?
+
+~\\
+\noindent
+{\bf Part IV}
+
+~\\
+\noindent
+Design and implement a circuit that successively flashes digits 0 
+through 9 on the 7-segment display $HEX0$. Each digit should be 
+displayed for about one second. Use a counter to determine the one-second 
+intervals. The counter should be incremented by the 50-MHz clock signal 
+provided on the DE2 board. Do not derive any other clock signals in your design--make 
+sure that all flip-flops in your circuit are clocked directly by the 50 MHz clock signal.
+
+~\\
+\noindent
+{\bf Part V}
+
+~\\
+\noindent
+Design and implement a circuit that displays the word HELLO, in
+ticker tape fashion, on the eight 7-segment displays $HEX7-0$. 
+Make the letters move from right to left in intervals of about one second.
+The patterns that should be displayed in successive clock intervals are given in Table 1.
+
+~\\
+\begin{center}
+\begin{tabular}{l|cccccccc}
+Clock cycle & \multicolumn{8}{c}{Displayed pattern} \\
+\hline
+\hspace{8.0 mm} {\rule[0mm]{0mm}{5mm}0} &  &  &  & H & E & L & L & O\\ 
+\hspace{8.0 mm} 1 &  &  & H & E & L & L & O & \\
+\hspace{8.0 mm} 2 &  & H & E & L & L & O &  & \\
+\hspace{8.0 mm} 3 & H & E & L & L & O &  &  & \\
+\hspace{8.0 mm} 4 & E & L & L & O &  &  &  & H\\
+\hspace{8.0 mm} 5 & L & L & O &  &  &  & H & E\\
+\hspace{8.0 mm} 6 & L & O &  &  &  & H & E & L\\
+\hspace{8.0 mm} 7 & O &  &  &  & H & E & L & L\\
+\hspace{8.0 mm} 8 &  &  &  & H & E & L & L & O\\
+\hspace{8.0 mm} $\ldots$ & \multicolumn{8}{l}{and so on}\\
+\end{tabular}
+\end{center}
+
+\begin{center}
+Table 1. Scrolling the word HELLO in ticker-tape fashion.
+\end{center}
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+Copyright \copyright 2006 Altera Corporation. 
+
+\end{document}

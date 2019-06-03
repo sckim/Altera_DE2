@@ -1,0 +1,310 @@
+\documentclass[epsfig,10pt,fullpage]{article}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
+\addtolength{\evensidemargin}{0.75in}
+\raggedbottom
+\usepackage{ae,aecompl}
+\usepackage{epsfig,float,times}
+
+\begin{document}
+
+~\\
+~\\
+~\\
+\centerline{\huge Laboratory Exercise 3}
+~\\
+\centerline{\large Latches, Flip-flops, and Registers}
+~\\
+~\\
+\noindent
+The purpose of this exercise is to investigate latches, flip-flops, and registers.
+
+~\\
+\noindent
+{\bf Part I}
+~\\
+~\\
+\noindent
+Altera FPGAs include flip-flops that are available for implementing a user's circuit. 
+We will show how to make use of these flip-flops in Part IV of this exercise. But
+first we will show how storage elements can be created in an FPGA without using 
+its dedicated flip-flops.
+
+Figure 1 depicts a gated RS latch circuit. Two styles of Verilog code
+that can be used to describe this circuit are given in Figure 2. Part $a$ of the 
+figure specifies the latch by instantiating logic gates, and part $b$ uses 
+logic expressions to create the same circuit. If this latch is implemented
+in an FPGA that has 4-input lookup tables (LUTs), then only one lookup table is needed, 
+as shown in Figure 3$a$. 
+~\\
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=RS_latch.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 1.  A gated RS latch circuit.}
+~\\
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+// A gated RS latch \\
+{\bf module} ~part1 (Clk, R, S, Q);\\
+\>{\bf input} Clk, R, S;\\
+\>{\bf output} Q;\\
+~\\
+\>{\bf wire} R\_g, S\_g, Qa, Qb /* synthesis keep */ ;\\
+~\\
+\>{\bf and} (R\_g, R, Clk);\\
+\>{\bf and} (S\_g, S, Clk);\\
+\>{\bf nor} (Qa, R\_g, Qb);\\
+\>{\bf nor} (Qb, S\_g, Qa);\\
+~\\
+\>{\bf assign} Q = Qa;\\
+~\\
+{\bf endmodule}\\
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+\begin{center}
+Figure 2$a$. Instantiating logic gates for the RS latch.
+\end{center}
+
+~\\
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+// A gated RS latch\\
+{\bf module} ~part1 (Clk, R, S, Q);\\
+\>{\bf input} Clk, R, S;\\
+\>{\bf output} Q;\\
+~\\
+\>{\bf wire} R\_g, S\_g, Qa, Qb /* synthesis keep */ ;\\
+~\\
+\>{\bf assign} R\_g = R \& Clk;\\
+\>{\bf assign} S\_g = S \& Clk;\\
+\>{\bf assign} Qa = $\sim$(R\_g $\mid$ Qb);\\
+\>{\bf assign} Qb = $\sim$(S\_g $\mid$ Qa);\\
+~\\
+\>{\bf assign} Q = Qa;\\
+~\\
+{\bf endmodule}\\
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+\begin{center}
+Figure 2$b$. Specifying the RS latch by using logic expressions.
+\end{center}
+~\\
+
+Although the latch can be correctly realized in one 4-input LUT, this implementation
+does not allow its internal signals, such as $R\_g$ and $S\_g$, to be observed, because
+they are not provided as outputs from the LUT. To preserve these internal signals in 
+the implemented circuit, it is necessary to include a {\it compiler
+directive} in the code. In Figure 2 the directive /* synthesis keep */ is
+included to instruct the Quartus II compiler to use separate logic elements for each of
+the signals $R\_g, S\_g, Qa,$ and $Qb$. Compiling the code produces the circuit with four
+4-LUTs depicted in Figure 3$b$. 
+~\\
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure3.3.eps}}}
+\end{figure}
+\centerline{Figure 3.  Implementation of the RS latch from Figure 1.}
+~\\
+
+Create a Quartus II project for the RS latch circuit as follows:
+
+\begin{enumerate}
+\item Create a new project for the RS latch. Select as the target chip the 
+Cyclone II EP2C35F672C6, which is the FPGA chip on the Altera DE2 board. 
+\item Generate a Verilog file with the code in either part $a$ or $b$ of Figure 2
+(both versions of the code should produce the same circuit) and include it in the project. 
+\item Compile the code. Use the Quartus II RTL Viewer tool to examine the gate-level
+circuit produced from the code, and use the Technology Viewer tool 
+to verify that the latch is implemented as shown in Figure 3$b$.
+\item Create a Vector Waveform File (.vwf) which specifies the inputs and outputs
+of the circuit. Draw waveforms for the $R$ and $S$ inputs and use the Quartus II Simulator to
+produce the corresponding waveforms for {\it R\_g}, {\it S\_g}, {\it Qa}, and {\it Qb}.
+Verify that the latch works as expected using both functional and timing simulation.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part II}
+~\\
+~\\
+\noindent
+Figure 4 shows the circuit for a gated D latch.
+
+~\\
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=D_latch.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 4.  Circuit for a gated D latch.}
+~\\
+
+\noindent
+Perform the following steps:
+
+\begin{enumerate}
+\item Create a new Quartus II project. Generate a Verilog file using the style of code 
+in Figure 2$b$ for the gated D latch. Use the /* synthesis keep */ directive to ensure
+that separate logic elements are used to implement the signals $R, S\_g, R\_g, Qa,$ and
+$Qb$.
+\item Select as the target chip the Cyclone II EP2C35F672C6 and compile the code. Use the 
+Technology Viewer tool to examine the implemented circuit.
+\item Verify that the latch works properly for all input conditions by using functional 
+simulation. Examine the timing characteristics of the circuit by using timing simulation.
+\item Create a new Quartus II project which will be used for implementation of the gated D
+latch on the DE2 board. This project should consist of a top-level module that 
+contains the appropriate input and output ports (pins) for the DE2 board. Instantiate your
+latch in this top-level module. Use switch {\it SW}$_0$ to drive the {\it D} input of the latch,
+and use {\it SW}$_1$ as the {\it Clk} input. Connect the Q output to {\it LEDR}$_{0}$.
+\item
+Recompile your project and download the compiled circuit onto the DE2 board.
+\item
+Test the functionality of your circuit by toggling the $D$ and {\it Clk} switches and observing 
+the Q output.
+\end{enumerate}
+
+\pagebreak
+\noindent
+{\bf Part III}
+~\\
+~\\
+\noindent
+Figure 5 shows the circuit for a master-slave D flip-flop.
+~\\
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure3.5.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 5.  Circuit for a master-slave D flip-flop.}
+
+~\\
+\noindent
+Perform the following:
+\begin{enumerate}
+\item Create a new Quartus II project. Generate a Verilog file that instantiates two
+copies of your gated D latch module from Part II to implement the master-slave flip-flop.
+\item Include in your project the appropriate input and output ports for the Altera
+DE2 board. Use switch {\it SW}$_0$ to drive the D input of the flip-flop,
+and use {\it SW}$_1$ as the {\it Clock} input. Connect the Q output to {\it LEDR}$_{0}$.
+\item
+Compile your project.
+\item Use the Technology Viewer to examine the D flip-flop circuit, and use
+simulation to verify its correct operation.
+\item
+Download the circuit onto the DE2 board and test its functionality 
+by toggling the $D$ and {\it Clock} switches and observing the Q output.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part IV}
+~\\
+~\\
+\noindent
+Figure 6 shows a circuit with three different storage elements: a gated D latch, 
+a positive-edge triggered D flip-flop, and a negative-edge triggered D flip-flop.
+~\\
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure3.6.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 6.  Circuit and waveforms for Part IV.}
+~\\
+
+\noindent
+Implement and simulate this circuit using Quartus II software as follows:
+\begin{enumerate}
+\item Create a new Quartus II project. 
+\item Write a Verilog file that instantiates the three storage elements. For this part you
+should no longer use the /*~synthesis keep~*/ directive from Parts I to III. Figure 7
+gives a behavioral style of Verilog code that specifies the gated D latch in Figure 4.
+This latch can be implemented in one 4-input lookup table. Use a similar style of
+code to specify the flip-flops in Figure 6.
+\item Compile your code and use the Technology Viewer to examine the implemented circuit.
+Verify that the latch uses one lookup table and that the flip-flops are implemented using
+the flip-flops provided in the target FPGA.
+\item Create a Vector Waveform File (.vwf) which specifies the inputs and outputs
+of the circuit. Draw the inputs $D$ and {\it Clock} as indicated in Figure 6.
+Use functional simulation to obtain the three output signals.
+Observe the different behavior of the three storage elements.
+\end{enumerate}
+
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+{\bf module} D\_latch ~(D, Clk, Q);\\
+\>{\bf input} D, Clk;\\
+\>{\bf output reg} Q;\\
+~\\
+\>{\bf always} @ (D, Clk)\\
+\>\>{\bf if} (Clk)\\
+\>\>\>Q = D;\\
+{\bf endmodule}\\
+\end{tabbing}
+\end{minipage}
+\end{center}
+\begin{center}
+Figure 7. A behavioral style of Verilog code that specifies a gated D latch.
+\end{center}
+
+~\\
+\noindent
+{\bf Part V}
+
+~\\
+\noindent
+We wish to display the hexadecimal value of a 16-bit number $A$
+on the four 7-segment displays, $HEX7-4$.
+We also wish to display the
+hex value of a 16-bit number $B$ on the four 7-segment displays,
+$HEX3-0$. The values of $A$ and $B$ are inputs to the circuit which are
+provided by means of switches $SW_{15-0}$. 
+This is to be done by first setting the switches to the value of $A$ and
+then setting the switches to the value of $B$; therefore, the value of $A$
+must be stored in the circuit.
+\begin{enumerate}
+\item Create a new Quartus II project which will be used to implement the desired
+circuit on the Altera DE2 board.
+\item Write a Verilog file that provides the necessary functionality. Use {\it KEY}$_0$ as
+an active-low asynchronous reset, and use {\it KEY}$_1$ as a clock input.
+\item Include the Verilog file in your project and compile the circuit.
+\item Assign the pins on the FPGA to connect to the switches and 7-segment
+displays, as indicated in the User Manual for the DE2 board.
+\item Recompile the circuit and download it into the FPGA chip.
+\item Test the functionality of your design by toggling the switches
+and observing the output displays.
+\end{enumerate}
+
+
+~\\
+~\\
+~\\
+~\\
+~\\
+Copyright \copyright 2006 Altera Corporation. 
+
+\end{document}

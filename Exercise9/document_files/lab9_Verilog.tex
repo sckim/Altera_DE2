@@ -1,0 +1,368 @@
+\documentclass[epsfig,10pt,fullpage]{article}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
+\addtolength{\evensidemargin}{0.75in}
+\raggedbottom
+\usepackage{ae,aecompl}
+\usepackage{epsfig,float,times}
+
+\begin{document}
+~\\
+\centerline{\huge Laboratory Exercise 9}
+~\\
+\centerline{\large A Simple Processor}
+~\\
+~\\
+\noindent
+Figure~1 shows a digital system that contains a number of 16-bit registers, a multiplexer, an
+adder/subtracter unit, a counter, and a control unit. Data is input to this system via the 16-bit
+{\it DIN} input. This data can be loaded through the 16-bit wide multiplexer into the various
+registers, such as $R0, \ldots, R7$ and {\it A}. The multiplexer also allows 
+data to be transferred from one register to another. The multiplexer's output wires are called 
+a {\it bus} in the figure because this term is often used for wiring that allows data to be 
+transferred from one location in a system to another.
+
+Addition or subtraction is performed by using the multiplexer to first place one
+16-bit number onto the bus wires and loading this number into register {\it A}. Once this
+is done, a second 16-bit number is placed onto the bus, the adder/subtracter unit
+performs the required operation, and the result is loaded into register {\it G}. The
+data in {\it G} can then be transferred to one of the other registers as required.
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+%\hbox{\psfig{figure=figure1.eps,width=6.25in}}}
+\hbox{\psfig{figure=figure1.eps}}}
+\end{figure}
+\centerline{Figure 1.  A digital system.}
+~\\
+The system can perform different operations in each clock cycle, 
+as governed by the {\it control unit}. This unit determines when particular data is 
+placed onto the bus wires and it controls which of the registers is to be loaded with this data.
+For example, if the control unit asserts the signals 
+$R0_{out}$ and $A_{in}$, then the 
+multiplexer will place the contents of register $R0$ onto the bus 
+and this data will be loaded by the next active clock edge into register {\it A}.
+
+A system like this is often called a {\it processor}. It executes operations specified in
+the form of instructions. 
+Table~1 lists the instructions that the processor has to support for this exercise.
+The left column shows the name of an instruction and its operand. The meaning of the syntax 
+RX $\leftarrow$ [RY] is that the contents of register RY are loaded into register RX. 
+The {\bf mv} (move) instruction allows data to be copied from one register to another. 
+For the {\bf mvi} (move immediate) instruction the expression RX $\leftarrow$ D indicates that the
+16-bit constant D is loaded into register RX.
+
+\begin{center}
+\begin{tabular}{l|c}
+\rule[-0.075in]{0in}{0.25in}Operation & Function performed \\ \hline 
+\rule[-0.075in]{0in}{0.25in}{\bf mv} $Rx$,$Ry$ & $Rx \leftarrow [Ry]$ \\ 
+\rule[-0.075in]{0in}{0.25in}{\bf mvi} $Rx$,\#$D$ & $Rx \leftarrow D$ \\ 
+\rule[-0.075in]{0in}{0.25in}{\bf add} $Rx,Ry$ & $Rx \leftarrow [Rx] + [Ry]$ \\ 
+\rule[-0.075in]{0in}{0.25in}{\bf sub} $Rx,Ry$ & $Rx \leftarrow [Rx] - [Ry]$ \\ 
+\end{tabular}
+\end{center}
+
+\begin{center}
+Table 1. Instructions performed in the processor.
+\end{center}
+
+Each instruction can be encoded and stored in the {\it IR} register using the 9-bit format 
+IIIXXXYYY, where III represents the instruction, XXX gives the RX register, and YYY
+gives the RY register. Although only two bits are needed to encode our four
+instructions, we are using three bits because other instructions will be added to the
+processor in later parts of this exercise. Hence {\it IR} has to be connected to nine bits of the 
+16-bit {\it DIN} input, as indicated in Figure~1.
+For the {\bf mvi} instruction the YYY field has no meaning, and the immediate data \#D has to be
+supplied on the 16-bit {\it DIN} input after the {\bf mvi} instruction word is stored into {\it IR}.
+
+Some instructions, such as an addition or subtraction, take more than one clock cycle to
+complete, because multiple transfers have to be performed across the bus. The control unit uses 
+the two-bit counter shown in Figure~1 to enable it to ``step through'' such instructions.
+The processor starts executing the instruction on the {\it DIN} input when the {\it Run}
+signal is asserted 
+and the processor asserts the {\it Done} output when the instruction is finished.
+Table 2 indicates the control signals that can be asserted in each time step to implement
+the instructions in Table 1. Note that the only control signal asserted in time step 0 is
+{\it IR}$_{in}$, so this time step is not shown in the table.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|}
+ \multicolumn{1}{c}{~} & \multicolumn{1}{c}{$T_1$} & \multicolumn{1}{c}{$T_2$} & \multicolumn{1}{c}{$T_3$} \rule[-0.075in]{0in}{0.25in}\\ \cline{2-4}
+({\bf mv}): $I_0$ & \rule[-0.075in]{0in}{0.25in}{\it RY$_{out}$}, {\it RX$_{in}$}, &  &  \\ 
+~ & {\it Done} &  &  \\ \cline{2-4}
+\multicolumn{1}{c|}{({\bf mvi}): $I_1$} & \rule[-0.075in]{0in}{0.25in}{\it DIN$_{out}$},
+{\it RX$_{in}$}, &  &  \\ 
+~ & {\it Done} &  &  \\ \cline{2-4}
+\rule[-0.075in]{0in}{0.25in}({\bf add}): $I_2$ & {\it RX$_{out}$}, {\it A$_{in}$} & {\it
+RY$_{out}$}, {\it G$_{in}$} & {\it G$_{out}$}, {\it RX$_{in}$}, \\
+~ & ~ & ~ & {\it Done} \\
+\cline{2-4}
+\rule[-0.075in]{0in}{0.25in}({\bf sub}): $I_3$ & {\it RX$_{out}$}, {\it A$_{in}$} & {\it
+RY$_{out}$}, {\it
+G$_{in}$}, & {\it G$_{out}$}, {\it RX$_{in}$}, \\
+~ & ~ & {\it AddSub} & {\it Done} \\
+\cline{2-4}
+\end{tabular}
+\end{center}
+
+\begin{center}
+Table 2. Control signals asserted in each instruction/time step.
+\end{center}
+
+\pagebreak
+\noindent
+{\bf Part I}
+~\\
+~\\
+\noindent
+Design and implement the processor shown in Figure~1 using Verilog code as follows:
+\begin{enumerate}
+\item Create a new Quartus II project for this exercise.
+\item Generate the required Verilog file, include it in your project, 
+and compile the circuit. A suggested skeleton of the Verilog code is shown in Figure~2$a$,
+and some subcircuit modules that can be used in this code appear in Figure~2$b$.
+\item Use functional simulation to verify that your code is correct. An example of the output
+produced by a functional simulation for a correctly-designed circuit is given in Figure~3.
+It shows the value ${(2000)}_{16}$ being loaded into {\it IR} from {\it DIN} at time 30 ns. This
+pattern represents the instruction {\bf mvi} R0,\#D, where the value $D = 5$ is loaded
+into $R0$ on
+the clock edge at 50 ns. The simulation then shows the instruction {\bf mv} R1,R0 at 90
+ns, {\bf add} R0,R1 at 110 ns, and {\bf sub} R0,R0 at 190 ns. 
+Note that the simulation output shows {\it DIN} as a 4-digit
+hexadecimal number, and it shows the contents of {\it IR} as a 3-digit octal number.
+\item Create a new Quartus II project which will be used for implementation of the 
+circuit on the Altera DE2 board. This project should consist of a top-level module that
+contains the appropriate input and output ports for the Altera board. Instantiate your
+processor in this top-level module. Use switches {\it SW}$_{15-0}$ to drive the {\it DIN} input 
+port of the processor and use switch {\it SW}$_{17}$ to drive the {\it Run} input. Also, use 
+push button {\it KEY}$_0$ for {\it Resetn} and {\it KEY}$_1$ for {\it Clock}.
+Connect the processor bus wires to {\it LEDR}$_{15-0}$ and connect the {\it Done} signal to
+{\it LEDR}$_{17}$.
+\item Add to your project the necessary pin assignments for the 
+DE2 board.  Compile the circuit and download it into the FPGA chip.
+\item Test the functionality of your design by toggling the switches
+and observing the LEDs. Since the processor's clock input is controlled by a push button
+switch, it is easy to step through the execution of instructions and observe the behavior
+of the circuit.
+\end{enumerate}
+
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+{\bf module} ~proc (DIN, Resetn, Clock, Run, Done, BusWires);\\
+\>{\bf input} [15:0] DIN;\\
+\>{\bf input} Resetn, Clock, Run;\\
+\>{\bf output} Done;\\
+\>{\bf output} [15:0] BusWires;\\
+~\rule{5.0in}{0in}\\
+\>$\ldots$ declare variables\\
+~\\
+\>{\bf wire} Clear = $\ldots$\\
+\>upcount Tstep (Clear, Clock, Tstep\_Q);\\
+\>{\bf assign} I = IR[1:3];\\
+\>dec3to8 decX (IR[4:6], 1'b1, Xreg);\\
+\>dec3to8 decY (IR[7:9], 1'b1, Yreg);\\
+\\
+\>{\bf always} @(Tstep\_Q {\bf or} I {\bf or} Xreg {\bf or} Yreg)\\
+\>{\bf begin}\\
+\>\>$\ldots$ specify initial values\\
+\>\>{\bf case} (Tstep\_Q)\\
+\>\>\>2'b00: // store DIN in IR in time step 0\\
+\>\>\>{\bf begin}\\
+\>\>\>\>IRin = 1'b1;\\
+\>\>\>{\bf end}\\
+\>\>\>2'b01:   //define signals in time step 1\\
+\>\>\>\>{\bf case} (I)\\
+\>\>\>\>\>$\ldots$ \\
+\>\>\>\>{\bf endcase}\\
+\>\>\>2'b10:   //define signals in time step 2\\
+\>\>\>\>{\bf case} (I)\\
+\>\>\>\>\>$\ldots$ \\
+\>\>\>\>{\bf endcase}\\
+\>\>\>2'b11:   //define signals in time step 3\\
+\>\>\>\>{\bf case} (I)\\
+\>\>\>\>\>$\ldots$ \\
+\>\>\>\>{\bf endcase}\\
+\>\>{\bf endcase}\\
+\>{\bf end}\\
+~\\
+\>regn reg\_0 (BusWires, Rin[0], Clock, R0);\\
+\>$\ldots$ instantiate other registers and the adder/subtracter unit\\
+~\\
+\>$\ldots$ define the bus\\
+~\\
+{\bf endmodule}\\
+~\rule{5.0in}{0in}\\
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+\begin{center}
+Figure 2$a$. Skeleton Verilog code for the processor.
+\end{center}
+
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+{\bf module} upcount(Clear, Clock, Q);\\
+\>{\bf input} Clear, Clock;\\
+\>{\bf output} [1:0] Q;\\
+\>{\bf reg} [1:0] Q;\\
+~\\
+\>{\bf always} @({\bf posedge} Clock)\\
+\>\>{\bf if} (Clear)\\
+\>\>\>Q $<$= 2'b0;\\
+\>\>{\bf else} \\
+\>\>\>Q $<$= Q + 1'b1;\\
+{\bf endmodule}\\
+~\\
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+{\bf module} ~dec3to8(W, En, Y);\\
+\>{\bf input} [2:0] W;\\
+\>{\bf input} En;\\
+\>{\bf output} [0:7] Y;\\
+\>{\bf reg} [0:7] Y;\\
+~\\	
+\>{\bf always} @(W {\bf or} En)\\
+\>{\bf begin}\\
+\>\>{\bf if} (En == 1)\\
+\>\>\>{\bf case} (W)\\
+\>\>\>\>3'b000: Y = 8'b10000000;\\
+\>\>\>\>3'b001: Y = 8'b01000000;\\
+\>\>\>\>3'b010: Y = 8'b00100000;\\
+\>\>\>\>3'b011: Y = 8'b00010000;\\
+\>\>\>\>3'b100: Y = 8'b00001000;\\
+\>\>\>\>3'b101: Y = 8'b00000100;\\
+\>\>\>\>3'b110: Y = 8'b00000010;\\
+\>\>\>\>3'b111: Y = 8'b00000001;\\
+\>\>\>{\bf endcase}\\
+\>\>{\bf else} \\
+\>\>\>Y = 8'b00000000;\\
+\>{\bf end}\\
+{\bf endmodule}\\
+~\\
+{\bf module} ~regn(R, Rin, Clock, Q);\\
+\>{\bf parameter} n = 16;\\
+\>{\bf input} [n-1:0] R;\\
+\>{\bf input} Rin, Clock;\\
+\>{\bf output} [n-1:0] Q;\\
+\>{\bf reg} [n-1:0] Q;\\
+~\\
+\>{\bf always} @({\bf posedge} Clock)\\
+\>\>{\bf if} (Rin)\\
+\>\>\>Q $<$= R;\\
+{\bf endmodule}\\
+~\rule{5.0in}{0in}\\
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+\begin{center}
+Figure 2$b$. Subcircuit modules for use in the processor.
+\end{center}
+
+~\\
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure3.eps}}}
+\end{figure}
+\centerline{Figure 3.  Simulation of the processor.}
+
+~\\
+\noindent
+{\bf Part II}
+~\\
+~\\
+\noindent
+In this part you are to design the circuit depicted in Figure~4, in which a 
+memory module and counter are connected to the processor from Part I. The
+counter is used to read the contents of successive addresses in the memory, and
+this data is provided to the processor as a stream of instructions. To simplify the
+design and testing of this circuit we have used separate clock signals, {\it PClock} 
+and {\it MClock}, for the processor and memory.
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure4.eps}}}
+\end{figure}
+\centerline{Figure 4. Connecting the processor to a memory and counter.}
+\begin{enumerate}
+\item Create a new Quartus II project which will be used to test your circuit.
+\item Generate a top-level Verilog file that instantiates the processor, memory, and
+counter. Use the Quartus II MegaWizard Plug-In Manager tool to create the memory 
+module from the Altera library of parameterized modules (LPMs). The correct
+LPM is found under the {\it storage} category and is called {\it ALTSYNCRAM}. Follow the
+instructions provided by the wizard to create a memory that has one 16-bit wide read data port
+and is 32 words deep. The first screen of the wizard is shown in Figure~5. Since
+this memory has only a read port, and no write port, it is called a 
+{\it synchronous read-only memory (synchronous ROM)}. 
+Note that the memory includes a register for synchronously loading addresses. This 
+register is required
+due to the design of the memory resources on the Cyclone II FPGA; account for
+the clocking of this address register in your design.
+
+To place processor instructions into the memory, you
+need to specify {\it initial values} that should be stored in the memory once your circuit
+has been programmed into the FPGA chip. This can be done by telling the wizard
+to initialize the memory using the contents of a {\it memory initialization file (MIF)}. The 
+appropriate screen of the MegaWizard Plug-In Manager tool is illustrated in
+Figure~6. We have specified a file named {\it inst\_mem.mif}, which then 
+has to be created in the directory that contains the Quartus II project. Use the Quartus II 
+on-line Help to learn about the format of the {\it MIF} file and create a file that has enough
+processor instructions to test your circuit.
+\item Use functional simulation to test the circuit. Ensure that data is read properly
+out of the ROM and executed by the processor.
+\item 
+Make sure your project includes the necessary port names and pin location assignments 
+to implement the circuit on the DE2
+board. Use switch {\it SW}$_{17}$ to drive the processor's {\it Run} input, use 
+{\it KEY}$_0$ for {\it Resetn}, use {\it KEY}$_1$ for {\it MClock},
+and use {\it KEY}$_2$ for {\it PClock}.
+Connect the processor bus wires to {\it LEDR}$_{15-0}$ and connect the {\it Done}
+signal to {\it LEDR}$_{17}$.
+\item Compile the circuit and download it into the FPGA chip.
+\item Test the functionality of your design by toggling the switches
+and observing the LEDs. Since the circuit's clock inputs are controlled by push button
+switches, it is easy to step through the execution of instructions and observe the behavior
+of the circuit.
+\end{enumerate}
+~\\
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure5.eps}}}
+\end{figure}
+\centerline{Figure 5. ALTSYNCRAM configuration.}
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure6.eps}}}
+\end{figure}
+\centerline{Figure 6. Specifying a memory initialization file (MIF).}
+
+~\\
+\noindent
+{\bf Enhanced Processor}
+~\\
+~\\
+\noindent
+It is possible to enhance the capability of the processor so that the counter in 
+Figure~4 is no longer needed, and so that the processor has the ability to perform read and
+write operations using memory or other devices. These enhancements involve adding new
+instructions to the processor and the programs that the processor executes are therefore
+more complex. Since these steps are beyond the scope of some logic design courses, they
+are described in a subsequent lab exercise available from Altera.
+
+~\\
+~\\
+~\\
+~\\
+~\\
+Copyright \copyright 2006 Altera Corporation.
+\end{document}

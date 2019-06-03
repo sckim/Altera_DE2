@@ -1,0 +1,87 @@
+\documentclass[psfig,10pt,fullpage]{article}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
+\addtolength{\evensidemargin}{0.75in}
+\raggedbottom
+\usepackage{psfig,float,times}
+
+\begin{document}
+
+~\\
+~\\
+~\\
+\centerline{\huge Laboratory Exercise 5}
+~\\
+\centerline{\large Clocks and Timers}
+~\\
+~\\
+
+This is an exercise in implementing and using a real-time clock.
+
+~\\
+\noindent
+{\bf Part I}
+
+~\\
+\noindent
+Implement a 3-digit BCD counter. Display the contents of the counter 
+on the 7-segment displays, {\it HEX2$-$0}. Derive a control signal,
+from the 50-MHz clock signal provided on the Altera DE2 board, 
+to increment the contents of the counter at one-second intervals. 
+Use the pushbutton switch {\it KEY}$_0$ to reset the counter to 0.
+\begin{enumerate}
+\item Create a new Quartus II project which will be used to implement the desired
+circuit on the DE2 board.
+\item Write a Verilog file that specifies the desired circuit.
+\item Include the Verilog file in your project and compile the circuit.
+\item Simulate the designed circuit to verify its functionality.
+\item Assign the pins on the FPGA to connect to the 7-segment
+displays and the pushbutton switch, 
+as indicated in the User Manual for the DE2 board.
+\item Recompile the circuit and download it into the FPGA chip.
+\item Verify that your circuit works correctly by observing the display.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part II}
+
+~\\
+\noindent
+Design and implement a circuit on the DE2 board that acts as a time-of-day clock.
+It should display the hour (from 0 to 23) on the 7-segment displays 
+{\it HEX7$-$6}, the minute (from 0 to 60) on {\it HEX5$-$4} and the second (from 0 to 60)
+on {\it HEX3$-$2}. Use the switches {\it SW}$_{15-0}$ to preset the hour and minute 
+parts of the time displayed by the clock.
+
+
+~\\
+\noindent
+{\bf Part III}
+
+~\\
+\noindent
+Design and implement on the DE2 board a reaction-timer circuit. The circuit is to operate
+as follows:
+\begin{enumerate}
+\item The circuit is reset by pressing the pushbutton switch {\it KEY}$_0$.
+\item After an elapsed time, the red light labeled {\it LEDR}$_0$ turns on and
+a four-digit BCD counter starts counting in intervals of milliseconds. 
+The amount of time in seconds from when the circuit is reset until {\it LEDR}$_0$
+is turned on is set by switches {\it SW}$_{7-0}$.
+\item A person whose reflexes are being
+tested must press the pushbutton {\it KEY}$_3$ as quickly as possible to turn the
+LED off and freeze the counter in its present state. The count which
+shows the reaction time will be displayed on the 7-segment displays {\it HEX2-0}.
+\end{enumerate}
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+Copyright \copyright 2006 Altera Corporation. 
+
+\end{document}
