@@ -1,0 +1,56 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 1.521 ns
+From           : SW[1]
+To             : ToggleFF:TFF15|T_out
+From Clock     : --
+To Clock       : KEY[0]
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 11.551 ns
+From           : ToggleFF:TFF3|T_out
+To             : HEX0[2]
+From Clock     : KEY[0]
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : 1.068 ns
+From           : SW[1]
+To             : ToggleFF:TFF1|T_out
+From Clock     : --
+To Clock       : KEY[0]
+Failed Paths   : 0
+
+Type           : Clock Setup: 'KEY[0]'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 335.35 MHz ( period = 2.982 ns )
+From           : ToggleFF:TFF1|T_out
+To             : ToggleFF:TFF15|T_out
+From Clock     : KEY[0]
+To Clock       : KEY[0]
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

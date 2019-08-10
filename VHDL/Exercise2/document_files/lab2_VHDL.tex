@@ -1,0 +1,283 @@
+\documentclass[psfig,10pt,fullpage]{article}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
+\addtolength{\evensidemargin}{0.75in}
+\raggedbottom
+\usepackage{psfig,float,times}
+
+\begin{document}
+
+\centerline{\huge Laboratory Exercise 2}
+~\\
+\centerline{\large Numbers and Displays}
+~\\
+
+This is an exercise in designing combinational circuits that can perform
+binary-to-decimal number conversion and binary-coded-decimal (BCD) addition.
+
+~\\
+\noindent
+{\bf Part I}
+
+~\\
+\noindent
+We wish to display on the 7-segment displays {\it HEX3} to {\it HEX0} the 
+values set by the switches $SW_{15-0}$. 
+Let the values denoted by $SW_{15-12}$, $SW_{11-8}$, $SW_{7-4}$ and 
+$SW_{3-0}$ be displayed on {\it HEX3}, {\it HEX2}, {\it HEX1} and {\it HEX0}, respectively.
+Your circuit should be able to display the digits from 0 to 9, and should treat the
+valuations 1010 to 1111 as don't-cares.
+\begin{enumerate}
+\item Create a new project which will be used to implement the desired
+circuit on the Altera DE2 board. The intent of this exercise is to manually 
+derive the logic functions needed for the 7-segment displays. You should use only
+simple VHDL assignment statements in your code and specify each logic function as
+a Boolean expression.
+\item Write a VHDL file that provides the necessary functionality. Include this 
+file in your project and assign the pins on the FPGA to connect to the 
+switches and 7-segment displays, as indicated in the User Manual for the DE2 board.
+The procedure for making pin assignments is described in the 
+tutorial {\it Quartus II Introduction using VHDL Design}, which is available 
+on the {\it DE2 System CD} and in the University Program section of Altera's web site.  
+\item Compile the project and download the compiled circuit into the FPGA
+chip.
+\item Test the functionality of your design by toggling the switches
+and observing the displays.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part II}
+
+~\\
+You are to design a circuit that converts a four-bit binary number $V = v_3 v_2 v_1 v_0$
+into its two-digit decimal equivalent $D = d_1 d_0$. Table 1 shows the required output
+values. A partial design of this circuit is given in Figure 1. It includes a comparator
+that checks when the value of $V$ is greater than 9, and uses the output of this
+comparator in the control of the 7-segment displays. You are to complete the design of
+this circuit by creating a VHDL entity which includes the comparator, multiplexers,
+and circuit {\it A} (do not include circuit {\it B} or the 7-segment decoder at this
+point). Your VHDL entity should have the four-bit input $V$, the four-bit output $M$ and
+the output {\it z}. The intent of this exercise is to use simple VHDL assignment
+statements to specify the required logic functions using Boolean
+expressions. Your VHDL code should not include any IF-ELSE, CASE, or
+similar statements. 
+
+\begin{center}
+\begin{tabular}{c|c c}
+Binary value & \multicolumn{2}{c}{Decimal digits}\\ \hline
+\hspace{0.75 mm} {\rule[0mm]{0mm}{5mm}0000} & 0 & 0\\ 
+\hspace{0.75 mm} 0001 & 0 & 1\\
+\hspace{0.75 mm} 0010 & 0 & 2\\
+\hspace{0.75 mm} {\rule[0mm]{0mm}{2.5mm}$\ldots$} & $\ldots$ & $\ldots$ \\
+\hspace{0.75 mm} {\rule[0mm]{0mm}{5mm}1001} & 0 & 9\\
+\hspace{0.75 mm} 1010 & 1 & 0\\
+\hspace{0.75 mm} 1011 & 1 & 1\\
+\hspace{0.75 mm} 1100 & 1 & 2\\
+\hspace{0.75 mm} 1101 & 1 & 3\\
+\hspace{0.75 mm} 1110 & 1 & 4\\
+\hspace{0.75 mm} 1111 & 1 & 5\\
+\end{tabular}
+\end{center}
+
+\begin{center}
+Table 1. Binary-to-decimal conversion values.
+\end{center}
+
+Perform the following steps:
+
+\begin{enumerate}
+\item Make a Quartus II project for your VHDL entity.
+\item Compile the circuit and use functional simulation to verify the correct operation of
+your comparator, multiplexers, and circuit {\it A}.
+\item Augment your VHDL code to include circuit {\it B} in Figure 1 as well as the 7-segment
+decoder. Change the inputs and outputs of your code to use switches $SW_{3-0}$ on the DE2
+board to represent the binary number $V$, and the displays {\it HEX1} and {\it HEX0}
+to show the values of decimal digits $d_1$ and $d_0$. Make sure to include in your 
+project the required pin assignments for the DE2 board.
+\item Recompile the project, and then download the circuit into the FPGA chip.
+\item Test your circuit by trying all possible values of $V$ and observing the output
+displays.
+\end{enumerate}
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure2.1.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 1.  Partial design of the binary-to-decimal conversion circuit.}
+
+~\\
+\noindent
+{\bf Part III}
+
+~\\
+Figure 2$a$ shows a circuit for a {\it full adder}, which has the inputs $a$, $b$, and $c_i$,
+and produces the outputs $s$ and $c_o$. Parts $b$ and $c$ of the figure show a circuit
+symbol and truth table for the full adder, which produces the two-bit binary sum
+$c_o s = a + b + c_i$. Figure 2$d$ shows how four instances of this full adder entity
+can be used to design a circuit that adds two four-bit numbers. This type of circuit is
+usually called a {\it ripple-carry} adder, because of the way that the carry signals are 
+passed from one full adder to the next. Write VHDL code that implements this circuit,
+as described below.
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure2.2.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 2.  A ripple-carry adder circuit.}
+~\\
+
+\begin{enumerate}
+\item Create a new Quartus II project for the adder circuit. Write a VHDL entity
+for the full adder subcircuit and write a top-level VHDL entity that instantiates four 
+instances of this full adder.
+\item Use switches $SW_{7-4}$ and $SW_{3-0}$ to represent the inputs $A$ and $B$, respectively.
+Use $SW_{8}$ for the carry-in $c_{in}$ of the adder. Connect the {\it SW} switches to
+their corresponding red lights LEDR, and connect the outputs of the adder, $c_{out}$ and
+$S$, to the green lights LEDG.
+\item Include the necessary pin assignments for the DE2 board, compile the circuit, and
+download it into the FPGA chip.
+\item Test your circuit by trying different values for numbers $A$, $B$, and $c_{in}$.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part IV}
+
+~\\
+In part II we discussed the conversion of binary numbers into decimal digits. It is
+sometimes useful to build circuits that use this method of representing decimal numbers,
+in which each decimal digit is represented using four bits. This scheme is known as the
+{\it binary coded decimal} (BCD) representation. As an example, the decimal value 59 is
+encoded in BCD form as 0101 1001.
+
+You are to design a circuit that adds two BCD digits. The inputs to the circuit
+are BCD numbers $A$ and $B$, plus a carry-in, $c_{in}$. The output should be a two-digit
+BCD sum $S_1 S_0$. Note that the largest sum that needs to be handled by this circuit
+is $S_1 S_0 = 9 + 9 + 1 = 19$. Perform the steps given below.
+
+\begin{enumerate}
+\item Create a new Quartus II project for your BCD adder. You should use the
+four-bit adder circuit from part III to produce a four-bit sum and carry-out for the
+operation $A$ + $B$. A circuit that converts this five-bit result, which has the maximum
+value 19, into two BCD digits $S_1 S_0$ can be designed in a very
+similar way as the binary-to-decimal converter from part II. Write your VHDL code using
+simple assignment statements to specify the required logic functions--do not use 
+other types of VHDL
+statements such as IF-ELSE or CASE statements for this part of the exercise.
+\item Use switches $SW_{7-4}$ and $SW_{3-0}$ for the inputs $A$ and $B$, respectively, and
+use $SW_{8}$ for the carry-in. Connect the {\it SW} switches to
+their corresponding red lights LEDR, and connect the four-bit sum and carry-out produced 
+by the operation $A$ + $B$ to the green lights LEDG. Display the BCD values of $A$
+and $B$ on the 7-segment displays {\it HEX6} and {\it HEX4}, and display the result $S_1 S_0$ on
+{\it HEX1} and {\it HEX0}.
+\item Since your circuit handles only BCD digits, check for the cases when the input 
+$A$ or $B$ is greater than nine. If this occurs, indicate an error by turning on 
+the green light {\it LEDG}$_8$.
+\item Include the necessary pin assignments for the DE2 board, compile the circuit, and
+download it into the FPGA chip.
+\item Test your circuit by trying different values for numbers $A$, $B$, and $c_{in}$.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part V}
+
+~\\
+\noindent
+Design a circuit that can add two 2-digit BCD numbers, $A_1 A_0$ and $B_1 B_0$ to produce
+the three-digit BCD sum $S_2 S_1 S_0$. Use two instances of your circuit
+from part IV to build this two-digit BCD adder. Perform the steps below:
+\begin{enumerate}
+\item Use switches $SW_{15-8}$ and $SW_{7-0}$ to represent 2-digit 
+BCD numbers $A_1 A_0$ and $B_1 B_0$, respectively.
+The value of $A_1 A_0$ should be displayed on the 7-segment displays {\it HEX7} 
+and {\it HEX6}, while $B_1 B_0$ should be on {\it HEX5} and {\it HEX4}.
+Display the BCD sum, $S_2 S_1 S_0$, on the 7-segment displays {\it HEX2},
+{\it HEX1} and {\it HEX0}.
+\item Make the necessary pin assignments and compile the circuit.
+\item Download the circuit into the FPGA chip, and test its operation.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part VI}
+
+~\\
+In part V you created VHDL code for a two-digit BCD adder by using two instances of the
+VHDL code for a one-digit BCD adder from part IV. A different approach for describing
+the two-digit BCD adder in VHDL code is to specify an algorithm like the one
+represented by the following pseudo-code:
+
+~\\
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+ZZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+1\>$T_0 = A_0 + B_0$ \\
+2\>if ($T_0 > 9$) then\\
+3\>\>$Z_0 = 10$;\\
+4\>\>$c_1 = 1$;\\
+5\>else\\
+6\>\>$Z_0 = 0$;\\
+7\>\>$c_1 = 0$;\\
+8\>end if\\
+9\>$S_0 = T_0 - Z_0$\\
+~\\
+10\>$T_1 = A_1 + B_1 + c_1$ \\
+11\>if ($T_1 > 9$) then\\
+12\>\>$Z_1 = 10$;\\
+13\>\>$c_2 = 1$;\\
+14\>else\\
+15\>\>$Z_1 = 0$;\\
+16\>\>$c_2 = 0$;\\
+17\>end if\\
+18\>$S_1 = T_1 - Z_1$\\
+19\>$S_2 = c_2$\\
+\end{tabbing}
+\end{minipage}
+\end{center}
+~\\
+It is reasonably straightforward to see what circuit could be used to implement this
+pseudo-code. Lines 1, 9, 10, and 18 represent adders, lines 2-8 and 11-17 correspond to
+multiplexers, and testing for the conditions $T_0 > 9$ and $T_1 > 9$ requires comparators.
+You are to write VHDL code that corresponds to this pseudo-code. Note that you can
+perform addition operations in your VHDL code instead of the subtractions shown 
+in lines 9 and 18. The intent of this part of the exercise is
+to examine the effects of relying more on the VHDL compiler to design the circuit by using
+IF-ELSE statements along with the VHDL $>$ and $+$ operators. 
+Perform the following steps:
+
+\begin{enumerate}
+\item Create a new Quartus II project for your VHDL code. Use the same switches, lights, and
+displays as in part~V. Compile your circuit.
+\item Use the Quartus II RTL Viewer tool to examine the circuit produced by compiling your
+VHDL code. Compare the circuit to the one you designed in Part V.
+\item Download your circuit onto the DE2 board and test it by trying different values for 
+numbers $A_1 A_0$ and $B_1 B_0$.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part VII}
+
+~\\
+\noindent
+Design a combinational circuit that converts a 6-bit binary number into 
+a 2-digit decimal number represented in the BCD form. 
+Use switches $SW_{5-0}$ to input the binary number and 7-segment displays 
+{\it HEX1} and {\it HEX0} to display the decimal number.
+Implement your circuit on the DE2 board and demonstrate its functionality.
+~\\
+~\\
+~\\
+~\\
+Copyright \copyright 2006 Altera Corporation. 
+
+\end{document}

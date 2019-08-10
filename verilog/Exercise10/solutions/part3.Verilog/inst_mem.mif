@@ -1,0 +1,32 @@
+DEPTH = 128;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = BIN;
+CONTENT
+BEGIN
+
+% This code displays a count (in register R2) on the red LEDs.
+00 : 0010010000000000;		% 			mvi	R1,#1							1
+01 : 0000000000000001;
+02 : 0010100000000000;		%			mvi	R2,#0							[LED]
+03 : 0000000000000000;
+
+04	: 0010110000000000;		% Loop 	mvi	R3,#0001000000000000		LED reg address 
+05	: 0001000000000000;
+06	: 1010100110000000;		% 			st		R2,R3							[LED]
+07	: 0100100010000000;		% 			add	R2,R1							++[LED]
+08	: 0010110000000000;		% 			mvi	R3,#1111111111111111		Delay
+09	: 1111111111111111;
+0A	: 0001011110000000;		% 			mv		R5,R7							Save address of next instruction
+0B : 0011000000000000;		% Outer	mvi	R4,#10100					Nested delay
+0C : 0000000000010100;
+0D : 0000001110000000;		% 			mv		R0,R7							Save address of next instruction
+0E : 0111000010000000;		% Inner	sub	R4,R1							Decrement R4
+0F : 1101110000000000;		% 			mvnz	R7,R0							jnz Inner
+10	: 0110110010000000;		% 			sub	R3,R1							Decrement R3
+11	: 1101111010000000;		% 			mvnz	R7,R5							jnz Outer
+
+12 : 0011110000000000;		%	 		mvi	R7,#Loop
+13 : 0000000000000100;
+
+END;

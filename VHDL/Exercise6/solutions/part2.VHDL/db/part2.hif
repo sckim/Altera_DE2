@@ -1,0 +1,171 @@
+Version 6.1 Build 201 11/27/2006 SJ Web Edition
+11
+867
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+part2
+# storage
+db|part2.(0).cnf
+db|part2.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part2.vhd
+53e6864af8f17c165972876d1c69a397
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# entity
+regn
+# storage
+db|part2.(1).cnf
+db|part2.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part2.vhd
+53e6864af8f17c165972876d1c69a397
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+n
+8
+PARAMETER_SIGNED_DEC
+USR
+ constraint(r)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(q)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+regn:U_A
+regn:U_B
+regn:U_S
+}
+# end
+# entity
+fa
+# storage
+db|part2.(2).cnf
+db|part2.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part2.vhd
+53e6864af8f17c165972876d1c69a397
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+fa:bit0
+fa:bit1
+fa:bit2
+fa:bit3
+fa:bit4
+fa:bit5
+fa:bit6
+fa:bit7
+}
+# end
+# entity
+flipflop
+# storage
+db|part2.(3).cnf
+db|part2.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part2.vhd
+53e6864af8f17c165972876d1c69a397
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+flipflop:U_Overflow
+}
+# end
+# entity
+hex7seg
+# storage
+db|part2.(4).cnf
+db|part2.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part2.vhd
+53e6864af8f17c165972876d1c69a397
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(hex)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(display)
+0 to 6
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+hex7seg:digit_7
+hex7seg:digit_6
+hex7seg:digit_5
+hex7seg:digit_4
+hex7seg:digit_1
+hex7seg:digit_0
+}
+# end
+# complete
+

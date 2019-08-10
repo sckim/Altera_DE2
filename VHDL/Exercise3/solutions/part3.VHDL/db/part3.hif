@@ -1,0 +1,68 @@
+Version 6.1 Build 201 11/27/2006 SJ Web Edition
+11
+867
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+part3
+# storage
+db|part3.(0).cnf
+db|part3.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part3.vhd
+bcb82c9950cd72c6fb201c6d4ab1ba8f
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# entity
+D_latch
+# storage
+db|part3.(1).cnf
+db|part3.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part3.vhd
+bcb82c9950cd72c6fb201c6d4ab1ba8f
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+D_latch:U1
+D_latch:U2
+}
+# end
+# complete
+

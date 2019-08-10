@@ -1,0 +1,454 @@
+Version 6.1 Build 201 11/27/2006 SJ Web Edition
+11
+867
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+part3
+# storage
+db|part3.(0).cnf
+db|part3.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part3.vhd
+59726bc3cb3b456b2999b8aaf3dd8c88
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# entity
+regn
+# storage
+db|part3.(1).cnf
+db|part3.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part3.vhd
+59726bc3cb3b456b2999b8aaf3dd8c88
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+n
+8
+PARAMETER_SIGNED_DEC
+USR
+ constraint(r)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(q)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+regn:U_A
+regn:U_B
+regn:U_S
+}
+# end
+# entity
+lpm_add8
+# storage
+db|part3.(2).cnf
+db|part3.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+lpm_add8.vhd
+413a941c30e081a53c2d47fd3d238623
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(dataa)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(datab)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(result)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+lpm_add8:U_add8
+}
+# end
+# entity
+lpm_add_sub
+# storage
+db|part3.(3).cnf
+db|part3.(3).cnf
+# case_insensitive
+# source_file
+c:|altera|61|quartus|libraries|megafunctions|lpm_add_sub.tdf
+c0d5e91956d9d3dd9ad812cc9c56861
+6
+# user_parameter {
+LPM_WIDTH
+8
+PARAMETER_SIGNED_DEC
+USR
+LPM_REPRESENTATION
+SIGNED
+PARAMETER_UNKNOWN
+DEF
+LPM_DIRECTION
+ADD
+PARAMETER_UNKNOWN
+USR
+ONE_INPUT_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+5
+PARAMETER_UNKNOWN
+DEF
+REGISTERED_AT_END
+0
+PARAMETER_UNKNOWN
+DEF
+OPTIMIZE_FOR_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+USE_CS_BUFFERS
+1
+PARAMETER_UNKNOWN
+DEF
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN_LENGTH
+48
+CARRY_CHAIN_LENGTH
+USR
+DEVICE_FAMILY
+Cyclone II
+PARAMETER_UNKNOWN
+USR
+USE_WYS
+OFF
+PARAMETER_UNKNOWN
+DEF
+STYLE
+FAST
+PARAMETER_UNKNOWN
+USR
+CBXI_PARAMETER
+add_sub_7kf
+PARAMETER_UNKNOWN
+USR
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+}
+# used_port {
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+overflow
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
+# include_file {
+c:|altera|61|quartus|libraries|megafunctions|look_add.inc
+ab9f577d30c5ef3166fab6c1c32c4a
+c:|altera|61|quartus|libraries|megafunctions|aglobal61.inc
+b513fb574ceb8f5886cd4ba429e82ec
+c:|altera|61|quartus|libraries|megafunctions|addcore.inc
+ff795e21e4847824c03218724f1a1252
+c:|altera|61|quartus|libraries|megafunctions|bypassff.inc
+8e8df160d449a63ec15dc86ecf2b373f
+c:|altera|61|quartus|libraries|megafunctions|altshift.inc
+70fa13aee7d6d160ef20b2de32813a
+c:|altera|61|quartus|libraries|megafunctions|alt_mercury_add_sub.inc
+ae39f15ed67cc9a095d29f68f6ad0f8
+c:|altera|61|quartus|libraries|megafunctions|alt_stratix_add_sub.inc
+c08f604aefba5b4f1f554e565113c6
+}
+# hierarchies {
+lpm_add8:U_add8|lpm_add_sub:lpm_add_sub_component
+}
+# end
+# entity
+add_sub_7kf
+# storage
+db|part3.(4).cnf
+db|part3.(4).cnf
+# case_insensitive
+# source_file
+db|add_sub_7kf.tdf
+bd225d24511270328221c4f26b0a434
+6
+# used_port {
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+overflow
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
+# hierarchies {
+lpm_add8:U_add8|lpm_add_sub:lpm_add_sub_component|add_sub_7kf:auto_generated
+}
+# end
+# entity
+flipflop
+# storage
+db|part3.(5).cnf
+db|part3.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part3.vhd
+59726bc3cb3b456b2999b8aaf3dd8c88
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+flipflop:U_Overflow
+}
+# end
+# entity
+hex7seg
+# storage
+db|part3.(6).cnf
+db|part3.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part3.vhd
+59726bc3cb3b456b2999b8aaf3dd8c88
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(hex)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(display)
+0 to 6
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+hex7seg:digit_7
+hex7seg:digit_6
+hex7seg:digit_5
+hex7seg:digit_4
+hex7seg:digit_1
+hex7seg:digit_0
+}
+# end
+# complete
+

@@ -1,0 +1,56 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 4.068 ns
+From           : SW[13]
+To             : regn:U_A|Q[5]
+From Clock     : --
+To Clock       : KEY[1]
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 12.577 ns
+From           : regn:U_B|Q[0]
+To             : LEDR[4]
+From Clock     : KEY[1]
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -0.011 ns
+From           : SW[3]
+To             : regn:U_B|Q[3]
+From Clock     : --
+To Clock       : KEY[1]
+Failed Paths   : 0
+
+Type           : Clock Setup: 'KEY[1]'
+Slack          : N/A
+Required Time  : None
+Actual Time    : 282.65 MHz ( period = 3.538 ns )
+From           : regn:U_B|Q[0]
+To             : regn:U_S|Q[7]
+From Clock     : KEY[1]
+To Clock       : KEY[1]
+Failed Paths   : 0
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 0
+
+--------------------------------------------------------------------------------------
+

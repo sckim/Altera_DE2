@@ -1,0 +1,515 @@
+Classic Timing Analyzer report for part1
+Wed May 02 18:44:22 2007
+Quartus II Version 6.1 Build 201 11/27/2006 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Clock Setup: 'KEY[0]'
+  6. tsu
+  7. tco
+  8. th
+  9. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                     ;
++------------------------------+-------+---------------+----------------------------------+---------------------+----------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From                ; To                   ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+---------------------+----------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 1.521 ns                         ; SW[1]               ; ToggleFF:TFF15|T_out ; --         ; KEY[0]   ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 11.551 ns                        ; ToggleFF:TFF3|T_out ; HEX0[2]              ; KEY[0]     ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; 1.068 ns                         ; SW[1]               ; ToggleFF:TFF1|T_out  ; --         ; KEY[0]   ; 0            ;
+; Clock Setup: 'KEY[0]'        ; N/A   ; None          ; 335.35 MHz ( period = 2.982 ns ) ; ToggleFF:TFF1|T_out ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                     ;                      ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+---------------------+----------------------+------------+----------+--------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                ; Setting            ; From ; To ; Entity Name ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                           ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                         ; Final              ;      ;    ;             ;
+; Default hold multicycle                               ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains             ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                        ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                      ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                 ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements               ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                      ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                  ; Off                ;      ;    ;             ;
+; Number of source nodes to report per destination node ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                 ; 10                 ;      ;    ;             ;
+; Number of paths to report                             ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                          ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                            ; Off                ;      ;    ;             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; KEY[0]          ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'KEY[0]'                                                                                                                                                                                            ;
++-------+------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                 ; To                   ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; 335.35 MHz ( period = 2.982 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.768 ns                ;
+; N/A   ; 335.46 MHz ( period = 2.981 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.767 ns                ;
+; N/A   ; 352.49 MHz ( period = 2.837 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.623 ns                ;
+; N/A   ; 352.61 MHz ( period = 2.836 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.622 ns                ;
+; N/A   ; 354.99 MHz ( period = 2.817 ns )               ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.513 ns                ;
+; N/A   ; 355.11 MHz ( period = 2.816 ns )               ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.512 ns                ;
+; N/A   ; 355.87 MHz ( period = 2.810 ns )               ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.506 ns                ;
+; N/A   ; 356.00 MHz ( period = 2.809 ns )               ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.505 ns                ;
+; N/A   ; 369.14 MHz ( period = 2.709 ns )               ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.495 ns                ;
+; N/A   ; 369.28 MHz ( period = 2.708 ns )               ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.494 ns                ;
+; N/A   ; 370.10 MHz ( period = 2.702 ns )               ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.398 ns                ;
+; N/A   ; 370.23 MHz ( period = 2.701 ns )               ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.397 ns                ;
+; N/A   ; 372.86 MHz ( period = 2.682 ns )               ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.468 ns                ;
+; N/A   ; 373.00 MHz ( period = 2.681 ns )               ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.467 ns                ;
+; N/A   ; 389.71 MHz ( period = 2.566 ns )               ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.352 ns                ;
+; N/A   ; 389.86 MHz ( period = 2.565 ns )               ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.351 ns                ;
+; N/A   ; 390.63 MHz ( period = 2.560 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.346 ns                ;
+; N/A   ; 390.63 MHz ( period = 2.560 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.346 ns                ;
+; N/A   ; 390.78 MHz ( period = 2.559 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.345 ns                ;
+; N/A   ; 397.77 MHz ( period = 2.514 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.390 ns                ;
+; N/A   ; 398.25 MHz ( period = 2.511 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.387 ns                ;
+; N/A   ; 412.71 MHz ( period = 2.423 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.299 ns                ;
+; N/A   ; 413.22 MHz ( period = 2.420 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF5|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.296 ns                ;
+; N/A   ; 413.22 MHz ( period = 2.420 ns )               ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF6|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.296 ns                ;
+; N/A   ; 414.08 MHz ( period = 2.415 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.201 ns                ;
+; N/A   ; 414.08 MHz ( period = 2.415 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.201 ns                ;
+; N/A   ; 414.25 MHz ( period = 2.414 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.200 ns                ;
+; N/A   ; 417.54 MHz ( period = 2.395 ns )               ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.091 ns                ;
+; N/A   ; 417.54 MHz ( period = 2.395 ns )               ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.091 ns                ;
+; N/A   ; 417.71 MHz ( period = 2.394 ns )               ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.090 ns                ;
+; N/A   ; 418.76 MHz ( period = 2.388 ns )               ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.084 ns                ;
+; N/A   ; 418.76 MHz ( period = 2.388 ns )               ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.084 ns                ;
+; N/A   ; 418.94 MHz ( period = 2.387 ns )               ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.083 ns                ;
+; N/A   ; 422.12 MHz ( period = 2.369 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.245 ns                ;
+; N/A   ; 422.65 MHz ( period = 2.366 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.242 ns                ;
+; N/A   ; 425.71 MHz ( period = 2.349 ns )               ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.135 ns                ;
+; N/A   ; 426.26 MHz ( period = 2.346 ns )               ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.132 ns                ;
+; N/A   ; 426.99 MHz ( period = 2.342 ns )               ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.128 ns                ;
+; N/A   ; 427.53 MHz ( period = 2.339 ns )               ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.125 ns                ;
+; N/A   ; 434.78 MHz ( period = 2.300 ns )               ; ToggleFF:TFF9|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.996 ns                ;
+; N/A   ; 434.97 MHz ( period = 2.299 ns )               ; ToggleFF:TFF9|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.995 ns                ;
+; N/A   ; 437.25 MHz ( period = 2.287 ns )               ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.073 ns                ;
+; N/A   ; 437.25 MHz ( period = 2.287 ns )               ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.073 ns                ;
+; N/A   ; 437.45 MHz ( period = 2.286 ns )               ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.072 ns                ;
+; N/A   ; 438.60 MHz ( period = 2.280 ns )               ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.976 ns                ;
+; N/A   ; 438.60 MHz ( period = 2.280 ns )               ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.976 ns                ;
+; N/A   ; 438.79 MHz ( period = 2.279 ns )               ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.975 ns                ;
+; N/A   ; 438.98 MHz ( period = 2.278 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.154 ns                ;
+; N/A   ; 439.56 MHz ( period = 2.275 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF5|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.151 ns                ;
+; N/A   ; 439.56 MHz ( period = 2.275 ns )               ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF6|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.151 ns                ;
+; N/A   ; 442.48 MHz ( period = 2.260 ns )               ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.046 ns                ;
+; N/A   ; 442.48 MHz ( period = 2.260 ns )               ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.046 ns                ;
+; N/A   ; 442.67 MHz ( period = 2.259 ns )               ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.045 ns                ;
+; N/A   ; 446.23 MHz ( period = 2.241 ns )               ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.117 ns                ;
+; N/A   ; 446.83 MHz ( period = 2.238 ns )               ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.114 ns                ;
+; N/A   ; 447.63 MHz ( period = 2.234 ns )               ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.020 ns                ;
+; N/A   ; 448.23 MHz ( period = 2.231 ns )               ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.017 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.090 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.087 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.026 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF5|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.023 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF6|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 2.023 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.930 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.930 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.929 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.924 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.830 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.829 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.999 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF5|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.996 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF6|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.996 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.974 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.971 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.883 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF5|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.880 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF6|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.880 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.779 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.669 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.662 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF10|T_out ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.681 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF10|T_out ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.680 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF9|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.574 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF9|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.574 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF9|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.573 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.651 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.554 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.624 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF3|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.548 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.508 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.408 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.408 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF9|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.325 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF3|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.403 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF10|T_out ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.259 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF10|T_out ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.259 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF10|T_out ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.258 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF4|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.233 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF12|T_out ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.217 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF12|T_out ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.216 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF11|T_out ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.112 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF11|T_out ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.111 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF4|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.104 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.005 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF1|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.049 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF2|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.046 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF11|T_out ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 1.035 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF3|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.961 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF4|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.959 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF13|T_out ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.881 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF13|T_out ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.880 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.873 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF4|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.865 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.847 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF6|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.845 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF2|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.836 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF11|T_out ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.832 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF14|T_out ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.824 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF12|T_out ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.821 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.579 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF12|T_out ; ToggleFF:TFF12|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF11|T_out ; ToggleFF:TFF11|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF10|T_out ; ToggleFF:TFF10|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF8|T_out  ; ToggleFF:TFF8|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF9|T_out  ; ToggleFF:TFF9|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF5|T_out  ; ToggleFF:TFF5|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF6|T_out  ; ToggleFF:TFF6|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF7|T_out  ; ToggleFF:TFF7|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF2|T_out  ; ToggleFF:TFF2|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF4|T_out  ; ToggleFF:TFF4|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF3|T_out  ; ToggleFF:TFF3|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF1|T_out  ; ToggleFF:TFF1|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF0|T_out  ; ToggleFF:TFF0|T_out  ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF13|T_out ; ToggleFF:TFF13|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF14|T_out ; ToggleFF:TFF14|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; ToggleFF:TFF15|T_out ; ToggleFF:TFF15|T_out ; KEY[0]     ; KEY[0]   ; None                        ; None                      ; 0.407 ns                ;
++-------+------------------------------------------------+----------------------+----------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++-----------------------------------------------------------------------------+
+; tsu                                                                         ;
++-------+--------------+------------+-------+----------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From  ; To                   ; To Clock ;
++-------+--------------+------------+-------+----------------------+----------+
+; N/A   ; None         ; 1.521 ns   ; SW[1] ; ToggleFF:TFF15|T_out ; KEY[0]   ;
+; N/A   ; None         ; 1.520 ns   ; SW[1] ; ToggleFF:TFF14|T_out ; KEY[0]   ;
+; N/A   ; None         ; 1.099 ns   ; SW[1] ; ToggleFF:TFF12|T_out ; KEY[0]   ;
+; N/A   ; None         ; 1.099 ns   ; SW[1] ; ToggleFF:TFF13|T_out ; KEY[0]   ;
+; N/A   ; None         ; 1.098 ns   ; SW[1] ; ToggleFF:TFF11|T_out ; KEY[0]   ;
+; N/A   ; None         ; 1.053 ns   ; SW[1] ; ToggleFF:TFF8|T_out  ; KEY[0]   ;
+; N/A   ; None         ; 1.050 ns   ; SW[1] ; ToggleFF:TFF9|T_out  ; KEY[0]   ;
+; N/A   ; None         ; 0.962 ns   ; SW[1] ; ToggleFF:TFF7|T_out  ; KEY[0]   ;
+; N/A   ; None         ; 0.959 ns   ; SW[1] ; ToggleFF:TFF5|T_out  ; KEY[0]   ;
+; N/A   ; None         ; 0.959 ns   ; SW[1] ; ToggleFF:TFF6|T_out  ; KEY[0]   ;
+; N/A   ; None         ; 0.677 ns   ; SW[1] ; ToggleFF:TFF10|T_out ; KEY[0]   ;
+; N/A   ; None         ; 0.301 ns   ; SW[1] ; ToggleFF:TFF3|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.143 ns  ; SW[1] ; ToggleFF:TFF4|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF12|T_out ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF11|T_out ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF10|T_out ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF2|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF4|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF3|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF1|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF0|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF13|T_out ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF14|T_out ; KEY[0]   ;
+; N/A   ; None         ; -0.613 ns  ; SW[0] ; ToggleFF:TFF15|T_out ; KEY[0]   ;
+; N/A   ; None         ; -0.690 ns  ; SW[0] ; ToggleFF:TFF8|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.690 ns  ; SW[0] ; ToggleFF:TFF9|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.690 ns  ; SW[0] ; ToggleFF:TFF5|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.690 ns  ; SW[0] ; ToggleFF:TFF6|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.690 ns  ; SW[0] ; ToggleFF:TFF7|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.834 ns  ; SW[1] ; ToggleFF:TFF2|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.834 ns  ; SW[1] ; ToggleFF:TFF0|T_out  ; KEY[0]   ;
+; N/A   ; None         ; -0.838 ns  ; SW[1] ; ToggleFF:TFF1|T_out  ; KEY[0]   ;
++-------+--------------+------------+-------+----------------------+----------+
+
+
++---------------------------------------------------------------------------------+
+; tco                                                                             ;
++-------+--------------+------------+----------------------+---------+------------+
+; Slack ; Required tco ; Actual tco ; From                 ; To      ; From Clock ;
++-------+--------------+------------+----------------------+---------+------------+
+; N/A   ; None         ; 11.551 ns  ; ToggleFF:TFF3|T_out  ; HEX0[2] ; KEY[0]     ;
+; N/A   ; None         ; 11.540 ns  ; ToggleFF:TFF3|T_out  ; HEX0[1] ; KEY[0]     ;
+; N/A   ; None         ; 11.539 ns  ; ToggleFF:TFF3|T_out  ; HEX0[0] ; KEY[0]     ;
+; N/A   ; None         ; 11.320 ns  ; ToggleFF:TFF3|T_out  ; HEX0[3] ; KEY[0]     ;
+; N/A   ; None         ; 11.312 ns  ; ToggleFF:TFF3|T_out  ; HEX0[6] ; KEY[0]     ;
+; N/A   ; None         ; 11.289 ns  ; ToggleFF:TFF3|T_out  ; HEX0[4] ; KEY[0]     ;
+; N/A   ; None         ; 11.278 ns  ; ToggleFF:TFF3|T_out  ; HEX0[5] ; KEY[0]     ;
+; N/A   ; None         ; 11.190 ns  ; ToggleFF:TFF1|T_out  ; HEX0[0] ; KEY[0]     ;
+; N/A   ; None         ; 11.165 ns  ; ToggleFF:TFF1|T_out  ; HEX0[2] ; KEY[0]     ;
+; N/A   ; None         ; 11.154 ns  ; ToggleFF:TFF1|T_out  ; HEX0[1] ; KEY[0]     ;
+; N/A   ; None         ; 11.063 ns  ; ToggleFF:TFF2|T_out  ; HEX0[0] ; KEY[0]     ;
+; N/A   ; None         ; 11.047 ns  ; ToggleFF:TFF2|T_out  ; HEX0[2] ; KEY[0]     ;
+; N/A   ; None         ; 11.035 ns  ; ToggleFF:TFF2|T_out  ; HEX0[1] ; KEY[0]     ;
+; N/A   ; None         ; 10.937 ns  ; ToggleFF:TFF1|T_out  ; HEX0[3] ; KEY[0]     ;
+; N/A   ; None         ; 10.929 ns  ; ToggleFF:TFF1|T_out  ; HEX0[5] ; KEY[0]     ;
+; N/A   ; None         ; 10.920 ns  ; ToggleFF:TFF1|T_out  ; HEX0[6] ; KEY[0]     ;
+; N/A   ; None         ; 10.907 ns  ; ToggleFF:TFF1|T_out  ; HEX0[4] ; KEY[0]     ;
+; N/A   ; None         ; 10.817 ns  ; ToggleFF:TFF2|T_out  ; HEX0[4] ; KEY[0]     ;
+; N/A   ; None         ; 10.812 ns  ; ToggleFF:TFF2|T_out  ; HEX0[3] ; KEY[0]     ;
+; N/A   ; None         ; 10.804 ns  ; ToggleFF:TFF2|T_out  ; HEX0[6] ; KEY[0]     ;
+; N/A   ; None         ; 10.803 ns  ; ToggleFF:TFF2|T_out  ; HEX0[5] ; KEY[0]     ;
+; N/A   ; None         ; 10.620 ns  ; ToggleFF:TFF0|T_out  ; HEX0[0] ; KEY[0]     ;
+; N/A   ; None         ; 10.595 ns  ; ToggleFF:TFF0|T_out  ; HEX0[2] ; KEY[0]     ;
+; N/A   ; None         ; 10.585 ns  ; ToggleFF:TFF0|T_out  ; HEX0[1] ; KEY[0]     ;
+; N/A   ; None         ; 10.369 ns  ; ToggleFF:TFF0|T_out  ; HEX0[3] ; KEY[0]     ;
+; N/A   ; None         ; 10.365 ns  ; ToggleFF:TFF0|T_out  ; HEX0[4] ; KEY[0]     ;
+; N/A   ; None         ; 10.359 ns  ; ToggleFF:TFF0|T_out  ; HEX0[5] ; KEY[0]     ;
+; N/A   ; None         ; 10.353 ns  ; ToggleFF:TFF0|T_out  ; HEX0[6] ; KEY[0]     ;
+; N/A   ; None         ; 8.714 ns   ; ToggleFF:TFF7|T_out  ; HEX1[0] ; KEY[0]     ;
+; N/A   ; None         ; 8.618 ns   ; ToggleFF:TFF4|T_out  ; HEX1[3] ; KEY[0]     ;
+; N/A   ; None         ; 8.565 ns   ; ToggleFF:TFF7|T_out  ; HEX1[1] ; KEY[0]     ;
+; N/A   ; None         ; 8.421 ns   ; ToggleFF:TFF4|T_out  ; HEX1[5] ; KEY[0]     ;
+; N/A   ; None         ; 8.416 ns   ; ToggleFF:TFF4|T_out  ; HEX1[4] ; KEY[0]     ;
+; N/A   ; None         ; 8.395 ns   ; ToggleFF:TFF4|T_out  ; HEX1[6] ; KEY[0]     ;
+; N/A   ; None         ; 8.388 ns   ; ToggleFF:TFF13|T_out ; HEX3[5] ; KEY[0]     ;
+; N/A   ; None         ; 8.375 ns   ; ToggleFF:TFF4|T_out  ; HEX1[0] ; KEY[0]     ;
+; N/A   ; None         ; 8.360 ns   ; ToggleFF:TFF13|T_out ; HEX3[6] ; KEY[0]     ;
+; N/A   ; None         ; 8.309 ns   ; ToggleFF:TFF5|T_out  ; HEX1[0] ; KEY[0]     ;
+; N/A   ; None         ; 8.231 ns   ; ToggleFF:TFF4|T_out  ; HEX1[1] ; KEY[0]     ;
+; N/A   ; None         ; 8.221 ns   ; ToggleFF:TFF10|T_out ; HEX2[2] ; KEY[0]     ;
+; N/A   ; None         ; 8.218 ns   ; ToggleFF:TFF9|T_out  ; HEX2[2] ; KEY[0]     ;
+; N/A   ; None         ; 8.200 ns   ; ToggleFF:TFF7|T_out  ; HEX1[2] ; KEY[0]     ;
+; N/A   ; None         ; 8.187 ns   ; ToggleFF:TFF6|T_out  ; HEX1[0] ; KEY[0]     ;
+; N/A   ; None         ; 8.169 ns   ; ToggleFF:TFF5|T_out  ; HEX1[1] ; KEY[0]     ;
+; N/A   ; None         ; 8.136 ns   ; ToggleFF:TFF13|T_out ; HEX3[1] ; KEY[0]     ;
+; N/A   ; None         ; 8.131 ns   ; ToggleFF:TFF13|T_out ; HEX3[2] ; KEY[0]     ;
+; N/A   ; None         ; 8.127 ns   ; ToggleFF:TFF14|T_out ; HEX3[5] ; KEY[0]     ;
+; N/A   ; None         ; 8.122 ns   ; ToggleFF:TFF11|T_out ; HEX2[2] ; KEY[0]     ;
+; N/A   ; None         ; 8.110 ns   ; ToggleFF:TFF10|T_out ; HEX2[3] ; KEY[0]     ;
+; N/A   ; None         ; 8.109 ns   ; ToggleFF:TFF9|T_out  ; HEX2[3] ; KEY[0]     ;
+; N/A   ; None         ; 8.096 ns   ; ToggleFF:TFF14|T_out ; HEX3[6] ; KEY[0]     ;
+; N/A   ; None         ; 8.094 ns   ; ToggleFF:TFF9|T_out  ; HEX2[0] ; KEY[0]     ;
+; N/A   ; None         ; 8.090 ns   ; ToggleFF:TFF13|T_out ; HEX3[3] ; KEY[0]     ;
+; N/A   ; None         ; 8.090 ns   ; ToggleFF:TFF13|T_out ; HEX3[4] ; KEY[0]     ;
+; N/A   ; None         ; 8.088 ns   ; ToggleFF:TFF10|T_out ; HEX2[0] ; KEY[0]     ;
+; N/A   ; None         ; 8.075 ns   ; ToggleFF:TFF13|T_out ; HEX3[0] ; KEY[0]     ;
+; N/A   ; None         ; 8.058 ns   ; ToggleFF:TFF7|T_out  ; HEX1[3] ; KEY[0]     ;
+; N/A   ; None         ; 8.055 ns   ; ToggleFF:TFF9|T_out  ; HEX2[1] ; KEY[0]     ;
+; N/A   ; None         ; 8.048 ns   ; ToggleFF:TFF10|T_out ; HEX2[1] ; KEY[0]     ;
+; N/A   ; None         ; 8.045 ns   ; ToggleFF:TFF6|T_out  ; HEX1[1] ; KEY[0]     ;
+; N/A   ; None         ; 8.011 ns   ; ToggleFF:TFF11|T_out ; HEX2[3] ; KEY[0]     ;
+; N/A   ; None         ; 7.992 ns   ; ToggleFF:TFF11|T_out ; HEX2[0] ; KEY[0]     ;
+; N/A   ; None         ; 7.989 ns   ; ToggleFF:TFF8|T_out  ; HEX2[2] ; KEY[0]     ;
+; N/A   ; None         ; 7.988 ns   ; ToggleFF:TFF12|T_out ; HEX3[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.957 ns   ; ToggleFF:TFF12|T_out ; HEX3[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.953 ns   ; ToggleFF:TFF11|T_out ; HEX2[1] ; KEY[0]     ;
+; N/A   ; None         ; 7.904 ns   ; ToggleFF:TFF8|T_out  ; HEX2[3] ; KEY[0]     ;
+; N/A   ; None         ; 7.886 ns   ; ToggleFF:TFF6|T_out  ; HEX1[3] ; KEY[0]     ;
+; N/A   ; None         ; 7.874 ns   ; ToggleFF:TFF8|T_out  ; HEX2[0] ; KEY[0]     ;
+; N/A   ; None         ; 7.873 ns   ; ToggleFF:TFF14|T_out ; HEX3[1] ; KEY[0]     ;
+; N/A   ; None         ; 7.861 ns   ; ToggleFF:TFF4|T_out  ; HEX1[2] ; KEY[0]     ;
+; N/A   ; None         ; 7.861 ns   ; ToggleFF:TFF7|T_out  ; HEX1[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.855 ns   ; ToggleFF:TFF7|T_out  ; HEX1[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.848 ns   ; ToggleFF:TFF15|T_out ; HEX3[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.846 ns   ; ToggleFF:TFF14|T_out ; HEX3[2] ; KEY[0]     ;
+; N/A   ; None         ; 7.842 ns   ; ToggleFF:TFF7|T_out  ; HEX1[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.838 ns   ; ToggleFF:TFF8|T_out  ; HEX2[1] ; KEY[0]     ;
+; N/A   ; None         ; 7.836 ns   ; ToggleFF:TFF14|T_out ; HEX3[3] ; KEY[0]     ;
+; N/A   ; None         ; 7.832 ns   ; ToggleFF:TFF14|T_out ; HEX3[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.824 ns   ; ToggleFF:TFF5|T_out  ; HEX1[2] ; KEY[0]     ;
+; N/A   ; None         ; 7.812 ns   ; ToggleFF:TFF14|T_out ; HEX3[0] ; KEY[0]     ;
+; N/A   ; None         ; 7.809 ns   ; ToggleFF:TFF15|T_out ; HEX3[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.762 ns   ; ToggleFF:TFF9|T_out  ; HEX2[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.761 ns   ; ToggleFF:TFF5|T_out  ; HEX1[3] ; KEY[0]     ;
+; N/A   ; None         ; 7.758 ns   ; ToggleFF:TFF10|T_out ; HEX2[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.752 ns   ; ToggleFF:TFF9|T_out  ; HEX2[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.750 ns   ; ToggleFF:TFF10|T_out ; HEX2[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.745 ns   ; ToggleFF:TFF9|T_out  ; HEX2[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.741 ns   ; ToggleFF:TFF10|T_out ; HEX2[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.738 ns   ; ToggleFF:TFF12|T_out ; HEX3[1] ; KEY[0]     ;
+; N/A   ; None         ; 7.731 ns   ; ToggleFF:TFF12|T_out ; HEX3[2] ; KEY[0]     ;
+; N/A   ; None         ; 7.702 ns   ; ToggleFF:TFF6|T_out  ; HEX1[2] ; KEY[0]     ;
+; N/A   ; None         ; 7.690 ns   ; ToggleFF:TFF6|T_out  ; HEX1[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.690 ns   ; ToggleFF:TFF12|T_out ; HEX3[3] ; KEY[0]     ;
+; N/A   ; None         ; 7.690 ns   ; ToggleFF:TFF12|T_out ; HEX3[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.685 ns   ; ToggleFF:TFF6|T_out  ; HEX1[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.677 ns   ; ToggleFF:TFF12|T_out ; HEX3[0] ; KEY[0]     ;
+; N/A   ; None         ; 7.664 ns   ; ToggleFF:TFF11|T_out ; HEX2[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.661 ns   ; ToggleFF:TFF6|T_out  ; HEX1[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.653 ns   ; ToggleFF:TFF11|T_out ; HEX2[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.646 ns   ; ToggleFF:TFF11|T_out ; HEX2[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.592 ns   ; ToggleFF:TFF15|T_out ; HEX3[2] ; KEY[0]     ;
+; N/A   ; None         ; 7.587 ns   ; ToggleFF:TFF15|T_out ; HEX3[1] ; KEY[0]     ;
+; N/A   ; None         ; 7.565 ns   ; ToggleFF:TFF5|T_out  ; HEX1[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.559 ns   ; ToggleFF:TFF5|T_out  ; HEX1[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.555 ns   ; ToggleFF:TFF15|T_out ; HEX3[3] ; KEY[0]     ;
+; N/A   ; None         ; 7.552 ns   ; ToggleFF:TFF15|T_out ; HEX3[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.545 ns   ; ToggleFF:TFF8|T_out  ; HEX2[5] ; KEY[0]     ;
+; N/A   ; None         ; 7.544 ns   ; ToggleFF:TFF8|T_out  ; HEX2[4] ; KEY[0]     ;
+; N/A   ; None         ; 7.536 ns   ; ToggleFF:TFF5|T_out  ; HEX1[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.536 ns   ; ToggleFF:TFF8|T_out  ; HEX2[6] ; KEY[0]     ;
+; N/A   ; None         ; 7.525 ns   ; ToggleFF:TFF15|T_out ; HEX3[0] ; KEY[0]     ;
++-------+--------------+------------+----------------------+---------+------------+
+
+
++-----------------------------------------------------------------------------------+
+; th                                                                                ;
++---------------+-------------+-----------+-------+----------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From  ; To                   ; To Clock ;
++---------------+-------------+-----------+-------+----------------------+----------+
+; N/A           ; None        ; 1.068 ns  ; SW[1] ; ToggleFF:TFF1|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 1.064 ns  ; SW[1] ; ToggleFF:TFF2|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 1.064 ns  ; SW[1] ; ToggleFF:TFF0|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.920 ns  ; SW[0] ; ToggleFF:TFF8|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.920 ns  ; SW[0] ; ToggleFF:TFF9|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.920 ns  ; SW[0] ; ToggleFF:TFF5|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.920 ns  ; SW[0] ; ToggleFF:TFF6|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.920 ns  ; SW[0] ; ToggleFF:TFF7|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF12|T_out ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF11|T_out ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF10|T_out ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF2|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF4|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF3|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF1|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF0|T_out  ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF13|T_out ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF14|T_out ; KEY[0]   ;
+; N/A           ; None        ; 0.843 ns  ; SW[0] ; ToggleFF:TFF15|T_out ; KEY[0]   ;
+; N/A           ; None        ; 0.373 ns  ; SW[1] ; ToggleFF:TFF4|T_out  ; KEY[0]   ;
+; N/A           ; None        ; -0.071 ns ; SW[1] ; ToggleFF:TFF3|T_out  ; KEY[0]   ;
+; N/A           ; None        ; -0.447 ns ; SW[1] ; ToggleFF:TFF10|T_out ; KEY[0]   ;
+; N/A           ; None        ; -0.729 ns ; SW[1] ; ToggleFF:TFF5|T_out  ; KEY[0]   ;
+; N/A           ; None        ; -0.729 ns ; SW[1] ; ToggleFF:TFF6|T_out  ; KEY[0]   ;
+; N/A           ; None        ; -0.732 ns ; SW[1] ; ToggleFF:TFF7|T_out  ; KEY[0]   ;
+; N/A           ; None        ; -0.820 ns ; SW[1] ; ToggleFF:TFF9|T_out  ; KEY[0]   ;
+; N/A           ; None        ; -0.823 ns ; SW[1] ; ToggleFF:TFF8|T_out  ; KEY[0]   ;
+; N/A           ; None        ; -0.868 ns ; SW[1] ; ToggleFF:TFF11|T_out ; KEY[0]   ;
+; N/A           ; None        ; -0.869 ns ; SW[1] ; ToggleFF:TFF12|T_out ; KEY[0]   ;
+; N/A           ; None        ; -0.869 ns ; SW[1] ; ToggleFF:TFF13|T_out ; KEY[0]   ;
+; N/A           ; None        ; -1.290 ns ; SW[1] ; ToggleFF:TFF14|T_out ; KEY[0]   ;
+; N/A           ; None        ; -1.291 ns ; SW[1] ; ToggleFF:TFF15|T_out ; KEY[0]   ;
++---------------+-------------+-----------+-------+----------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 6.1 Build 201 11/27/2006 SJ Web Edition
+    Info: Processing started: Wed May 02 18:44:17 2007
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off part1 -c part1 --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "KEY[0]" is an undefined clock
+Info: Clock "KEY[0]" has Internal fmax of 335.35 MHz between source register "ToggleFF:TFF1|T_out" and destination register "ToggleFF:TFF15|T_out" (period= 2.982 ns)
+    Info: + Longest register to register delay is 2.768 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X64_Y8_N5; Fanout = 10; REG Node = 'ToggleFF:TFF1|T_out'
+        Info: 2: + IC(0.334 ns) + CELL(0.275 ns) = 0.609 ns; Loc. = LCCOMB_X64_Y8_N30; Fanout = 3; COMB Node = 'Enable[2]'
+        Info: 3: + IC(0.261 ns) + CELL(0.150 ns) = 1.020 ns; Loc. = LCCOMB_X64_Y8_N26; Fanout = 4; COMB Node = 'Enable[5]'
+        Info: 4: + IC(0.260 ns) + CELL(0.150 ns) = 1.430 ns; Loc. = LCCOMB_X64_Y8_N2; Fanout = 4; COMB Node = 'Enable[8]'
+        Info: 5: + IC(0.257 ns) + CELL(0.150 ns) = 1.837 ns; Loc. = LCCOMB_X64_Y8_N10; Fanout = 4; COMB Node = 'Enable[11]'
+        Info: 6: + IC(0.276 ns) + CELL(0.150 ns) = 2.263 ns; Loc. = LCCOMB_X64_Y8_N12; Fanout = 2; COMB Node = 'Enable[13]'
+        Info: 7: + IC(0.271 ns) + CELL(0.150 ns) = 2.684 ns; Loc. = LCCOMB_X64_Y8_N22; Fanout = 1; COMB Node = 'ToggleFF:TFF15|T_out~70'
+        Info: 8: + IC(0.000 ns) + CELL(0.084 ns) = 2.768 ns; Loc. = LCFF_X64_Y8_N23; Fanout = 8; REG Node = 'ToggleFF:TFF15|T_out'
+        Info: Total cell delay = 1.109 ns ( 40.07 % )
+        Info: Total interconnect delay = 1.659 ns ( 59.93 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "KEY[0]" to destination register is 3.353 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 16; CLK Node = 'KEY[0]'
+            Info: 2: + IC(1.954 ns) + CELL(0.537 ns) = 3.353 ns; Loc. = LCFF_X64_Y8_N23; Fanout = 8; REG Node = 'ToggleFF:TFF15|T_out'
+            Info: Total cell delay = 1.399 ns ( 41.72 % )
+            Info: Total interconnect delay = 1.954 ns ( 58.28 % )
+        Info: - Longest clock path from clock "KEY[0]" to source register is 3.353 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 16; CLK Node = 'KEY[0]'
+            Info: 2: + IC(1.954 ns) + CELL(0.537 ns) = 3.353 ns; Loc. = LCFF_X64_Y8_N5; Fanout = 10; REG Node = 'ToggleFF:TFF1|T_out'
+            Info: Total cell delay = 1.399 ns ( 41.72 % )
+            Info: Total interconnect delay = 1.954 ns ( 58.28 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: tsu for register "ToggleFF:TFF15|T_out" (data pin = "SW[1]", clock pin = "KEY[0]") is 1.521 ns
+    Info: + Longest pin to register delay is 4.910 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N26; Fanout = 4; PIN Node = 'SW[1]'
+        Info: 2: + IC(1.339 ns) + CELL(0.413 ns) = 2.751 ns; Loc. = LCCOMB_X64_Y8_N30; Fanout = 3; COMB Node = 'Enable[2]'
+        Info: 3: + IC(0.261 ns) + CELL(0.150 ns) = 3.162 ns; Loc. = LCCOMB_X64_Y8_N26; Fanout = 4; COMB Node = 'Enable[5]'
+        Info: 4: + IC(0.260 ns) + CELL(0.150 ns) = 3.572 ns; Loc. = LCCOMB_X64_Y8_N2; Fanout = 4; COMB Node = 'Enable[8]'
+        Info: 5: + IC(0.257 ns) + CELL(0.150 ns) = 3.979 ns; Loc. = LCCOMB_X64_Y8_N10; Fanout = 4; COMB Node = 'Enable[11]'
+        Info: 6: + IC(0.276 ns) + CELL(0.150 ns) = 4.405 ns; Loc. = LCCOMB_X64_Y8_N12; Fanout = 2; COMB Node = 'Enable[13]'
+        Info: 7: + IC(0.271 ns) + CELL(0.150 ns) = 4.826 ns; Loc. = LCCOMB_X64_Y8_N22; Fanout = 1; COMB Node = 'ToggleFF:TFF15|T_out~70'
+        Info: 8: + IC(0.000 ns) + CELL(0.084 ns) = 4.910 ns; Loc. = LCFF_X64_Y8_N23; Fanout = 8; REG Node = 'ToggleFF:TFF15|T_out'
+        Info: Total cell delay = 2.246 ns ( 45.74 % )
+        Info: Total interconnect delay = 2.664 ns ( 54.26 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "KEY[0]" to destination register is 3.353 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 16; CLK Node = 'KEY[0]'
+        Info: 2: + IC(1.954 ns) + CELL(0.537 ns) = 3.353 ns; Loc. = LCFF_X64_Y8_N23; Fanout = 8; REG Node = 'ToggleFF:TFF15|T_out'
+        Info: Total cell delay = 1.399 ns ( 41.72 % )
+        Info: Total interconnect delay = 1.954 ns ( 58.28 % )
+Info: tco from clock "KEY[0]" to destination pin "HEX0[2]" through register "ToggleFF:TFF3|T_out" is 11.551 ns
+    Info: + Longest clock path from clock "KEY[0]" to source register is 3.353 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 16; CLK Node = 'KEY[0]'
+        Info: 2: + IC(1.954 ns) + CELL(0.537 ns) = 3.353 ns; Loc. = LCFF_X64_Y8_N21; Fanout = 10; REG Node = 'ToggleFF:TFF3|T_out'
+        Info: Total cell delay = 1.399 ns ( 41.72 % )
+        Info: Total interconnect delay = 1.954 ns ( 58.28 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 7.948 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X64_Y8_N21; Fanout = 10; REG Node = 'ToggleFF:TFF3|T_out'
+        Info: 2: + IC(3.931 ns) + CELL(0.419 ns) = 4.350 ns; Loc. = LCCOMB_X28_Y1_N24; Fanout = 1; COMB Node = 'hex7seg:digit0|Mux2~13'
+        Info: 3: + IC(0.820 ns) + CELL(2.778 ns) = 7.948 ns; Loc. = PIN_AC12; Fanout = 0; PIN Node = 'HEX0[2]'
+        Info: Total cell delay = 3.197 ns ( 40.22 % )
+        Info: Total interconnect delay = 4.751 ns ( 59.78 % )
+Info: th for register "ToggleFF:TFF1|T_out" (data pin = "SW[1]", clock pin = "KEY[0]") is 1.068 ns
+    Info: + Longest clock path from clock "KEY[0]" to destination register is 3.353 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 16; CLK Node = 'KEY[0]'
+        Info: 2: + IC(1.954 ns) + CELL(0.537 ns) = 3.353 ns; Loc. = LCFF_X64_Y8_N5; Fanout = 10; REG Node = 'ToggleFF:TFF1|T_out'
+        Info: Total cell delay = 1.399 ns ( 41.72 % )
+        Info: Total interconnect delay = 1.954 ns ( 58.28 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 2.551 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.999 ns) = 0.999 ns; Loc. = PIN_N26; Fanout = 4; PIN Node = 'SW[1]'
+        Info: 2: + IC(1.318 ns) + CELL(0.150 ns) = 2.467 ns; Loc. = LCCOMB_X64_Y8_N4; Fanout = 1; COMB Node = 'ToggleFF:TFF1|T_out~26'
+        Info: 3: + IC(0.000 ns) + CELL(0.084 ns) = 2.551 ns; Loc. = LCFF_X64_Y8_N5; Fanout = 10; REG Node = 'ToggleFF:TFF1|T_out'
+        Info: Total cell delay = 1.233 ns ( 48.33 % )
+        Info: Total interconnect delay = 1.318 ns ( 51.67 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Allocated 112 megabytes of memory during processing
+    Info: Processing ended: Wed May 02 18:44:22 2007
+    Info: Elapsed time: 00:00:05
+
+

@@ -1,0 +1,329 @@
+|part1
+SW[0] => ToggleFF:TFF15.Resetn
+SW[0] => ToggleFF:TFF14.Resetn
+SW[0] => ToggleFF:TFF13.Resetn
+SW[0] => ToggleFF:TFF12.Resetn
+SW[0] => ToggleFF:TFF11.Resetn
+SW[0] => ToggleFF:TFF10.Resetn
+SW[0] => ToggleFF:TFF9.Resetn
+SW[0] => ToggleFF:TFF8.Resetn
+SW[0] => ToggleFF:TFF7.Resetn
+SW[0] => ToggleFF:TFF6.Resetn
+SW[0] => ToggleFF:TFF5.Resetn
+SW[0] => ToggleFF:TFF4.Resetn
+SW[0] => ToggleFF:TFF3.Resetn
+SW[0] => ToggleFF:TFF2.Resetn
+SW[0] => ToggleFF:TFF1.Resetn
+SW[0] => ToggleFF:TFF0.Resetn
+SW[1] => Enable[1].IN1
+SW[1] => ToggleFF:TFF0.T
+KEY[0] => ToggleFF:TFF15.Clock
+KEY[0] => ToggleFF:TFF14.Clock
+KEY[0] => ToggleFF:TFF13.Clock
+KEY[0] => ToggleFF:TFF12.Clock
+KEY[0] => ToggleFF:TFF11.Clock
+KEY[0] => ToggleFF:TFF10.Clock
+KEY[0] => ToggleFF:TFF9.Clock
+KEY[0] => ToggleFF:TFF8.Clock
+KEY[0] => ToggleFF:TFF7.Clock
+KEY[0] => ToggleFF:TFF6.Clock
+KEY[0] => ToggleFF:TFF5.Clock
+KEY[0] => ToggleFF:TFF4.Clock
+KEY[0] => ToggleFF:TFF3.Clock
+KEY[0] => ToggleFF:TFF2.Clock
+KEY[0] => ToggleFF:TFF1.Clock
+KEY[0] => ToggleFF:TFF0.Clock
+HEX3[6] <= hex7seg:digit3.display[6]
+HEX3[5] <= hex7seg:digit3.display[5]
+HEX3[4] <= hex7seg:digit3.display[4]
+HEX3[3] <= hex7seg:digit3.display[3]
+HEX3[2] <= hex7seg:digit3.display[2]
+HEX3[1] <= hex7seg:digit3.display[1]
+HEX3[0] <= hex7seg:digit3.display[0]
+HEX2[6] <= hex7seg:digit2.display[6]
+HEX2[5] <= hex7seg:digit2.display[5]
+HEX2[4] <= hex7seg:digit2.display[4]
+HEX2[3] <= hex7seg:digit2.display[3]
+HEX2[2] <= hex7seg:digit2.display[2]
+HEX2[1] <= hex7seg:digit2.display[1]
+HEX2[0] <= hex7seg:digit2.display[0]
+HEX1[6] <= hex7seg:digit1.display[6]
+HEX1[5] <= hex7seg:digit1.display[5]
+HEX1[4] <= hex7seg:digit1.display[4]
+HEX1[3] <= hex7seg:digit1.display[3]
+HEX1[2] <= hex7seg:digit1.display[2]
+HEX1[1] <= hex7seg:digit1.display[1]
+HEX1[0] <= hex7seg:digit1.display[0]
+HEX0[6] <= hex7seg:digit0.display[6]
+HEX0[5] <= hex7seg:digit0.display[5]
+HEX0[4] <= hex7seg:digit0.display[4]
+HEX0[3] <= hex7seg:digit0.display[3]
+HEX0[2] <= hex7seg:digit0.display[2]
+HEX0[1] <= hex7seg:digit0.display[1]
+HEX0[0] <= hex7seg:digit0.display[0]
+
+
+|part1|ToggleFF:TFF0
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF1
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF2
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF3
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF4
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF5
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF6
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF7
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF8
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF9
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF10
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF11
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF12
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF13
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF14
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|ToggleFF:TFF15
+T => T_out~0.OUTPUTSELECT
+Clock => T_out.CLK
+Resetn => T_out~1.OUTPUTSELECT
+Q <= T_out.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|hex7seg:digit3
+hex[0] => Mux0.IN19
+hex[0] => Mux1.IN19
+hex[0] => Mux2.IN19
+hex[0] => Mux3.IN19
+hex[0] => Mux4.IN19
+hex[0] => Mux5.IN19
+hex[0] => Mux6.IN19
+hex[1] => Mux0.IN18
+hex[1] => Mux1.IN18
+hex[1] => Mux2.IN18
+hex[1] => Mux3.IN18
+hex[1] => Mux4.IN18
+hex[1] => Mux5.IN18
+hex[1] => Mux6.IN18
+hex[2] => Mux0.IN17
+hex[2] => Mux1.IN17
+hex[2] => Mux2.IN17
+hex[2] => Mux3.IN17
+hex[2] => Mux4.IN17
+hex[2] => Mux5.IN17
+hex[2] => Mux6.IN17
+hex[3] => Mux0.IN16
+hex[3] => Mux1.IN16
+hex[3] => Mux2.IN16
+hex[3] => Mux3.IN16
+hex[3] => Mux4.IN16
+hex[3] => Mux5.IN16
+hex[3] => Mux6.IN16
+display[6] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+display[5] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+display[4] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+display[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+display[2] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+display[1] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+display[0] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|hex7seg:digit2
+hex[0] => Mux0.IN19
+hex[0] => Mux1.IN19
+hex[0] => Mux2.IN19
+hex[0] => Mux3.IN19
+hex[0] => Mux4.IN19
+hex[0] => Mux5.IN19
+hex[0] => Mux6.IN19
+hex[1] => Mux0.IN18
+hex[1] => Mux1.IN18
+hex[1] => Mux2.IN18
+hex[1] => Mux3.IN18
+hex[1] => Mux4.IN18
+hex[1] => Mux5.IN18
+hex[1] => Mux6.IN18
+hex[2] => Mux0.IN17
+hex[2] => Mux1.IN17
+hex[2] => Mux2.IN17
+hex[2] => Mux3.IN17
+hex[2] => Mux4.IN17
+hex[2] => Mux5.IN17
+hex[2] => Mux6.IN17
+hex[3] => Mux0.IN16
+hex[3] => Mux1.IN16
+hex[3] => Mux2.IN16
+hex[3] => Mux3.IN16
+hex[3] => Mux4.IN16
+hex[3] => Mux5.IN16
+hex[3] => Mux6.IN16
+display[6] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+display[5] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+display[4] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+display[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+display[2] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+display[1] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+display[0] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|hex7seg:digit1
+hex[0] => Mux0.IN19
+hex[0] => Mux1.IN19
+hex[0] => Mux2.IN19
+hex[0] => Mux3.IN19
+hex[0] => Mux4.IN19
+hex[0] => Mux5.IN19
+hex[0] => Mux6.IN19
+hex[1] => Mux0.IN18
+hex[1] => Mux1.IN18
+hex[1] => Mux2.IN18
+hex[1] => Mux3.IN18
+hex[1] => Mux4.IN18
+hex[1] => Mux5.IN18
+hex[1] => Mux6.IN18
+hex[2] => Mux0.IN17
+hex[2] => Mux1.IN17
+hex[2] => Mux2.IN17
+hex[2] => Mux3.IN17
+hex[2] => Mux4.IN17
+hex[2] => Mux5.IN17
+hex[2] => Mux6.IN17
+hex[3] => Mux0.IN16
+hex[3] => Mux1.IN16
+hex[3] => Mux2.IN16
+hex[3] => Mux3.IN16
+hex[3] => Mux4.IN16
+hex[3] => Mux5.IN16
+hex[3] => Mux6.IN16
+display[6] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+display[5] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+display[4] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+display[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+display[2] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+display[1] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+display[0] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|part1|hex7seg:digit0
+hex[0] => Mux0.IN19
+hex[0] => Mux1.IN19
+hex[0] => Mux2.IN19
+hex[0] => Mux3.IN19
+hex[0] => Mux4.IN19
+hex[0] => Mux5.IN19
+hex[0] => Mux6.IN19
+hex[1] => Mux0.IN18
+hex[1] => Mux1.IN18
+hex[1] => Mux2.IN18
+hex[1] => Mux3.IN18
+hex[1] => Mux4.IN18
+hex[1] => Mux5.IN18
+hex[1] => Mux6.IN18
+hex[2] => Mux0.IN17
+hex[2] => Mux1.IN17
+hex[2] => Mux2.IN17
+hex[2] => Mux3.IN17
+hex[2] => Mux4.IN17
+hex[2] => Mux5.IN17
+hex[2] => Mux6.IN17
+hex[3] => Mux0.IN16
+hex[3] => Mux1.IN16
+hex[3] => Mux2.IN16
+hex[3] => Mux3.IN16
+hex[3] => Mux4.IN16
+hex[3] => Mux5.IN16
+hex[3] => Mux6.IN16
+display[6] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+display[5] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+display[4] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+display[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+display[2] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+display[1] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+display[0] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+

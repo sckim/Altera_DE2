@@ -1,0 +1,214 @@
+Classic Timing Analyzer report for part1
+Wed May 02 11:55:18 2007
+Quartus II Version 6.1 Build 201 11/27/2006 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. tpd
+  5. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2006 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                      ;
++------------------------------+-------+---------------+-------------+--------+---------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time ; From   ; To      ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+-------------+--------+---------+------------+----------+--------------+
+; Worst-case tpd               ; N/A   ; None          ; 10.853 ns   ; SW[14] ; HEX3[6] ; --         ; --       ; 0            ;
+; Total number of failed paths ;       ;               ;             ;        ;         ;            ;          ; 0            ;
++------------------------------+-------+---------------+-------------+--------+---------+------------+----------+--------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                ; Setting            ; From ; To ; Entity Name ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                           ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                         ; Final              ;      ;    ;             ;
+; Default hold multicycle                               ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains             ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                        ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                      ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                 ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements               ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                      ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                  ; Off                ;      ;    ;             ;
+; Number of source nodes to report per destination node ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                 ; 10                 ;      ;    ;             ;
+; Number of paths to report                             ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                          ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                            ; Off                ;      ;    ;             ;
++-------------------------------------------------------+--------------------+------+----+-------------+
+
+
++-----------------------------------------------------------------+
+; tpd                                                             ;
++-------+-------------------+-----------------+--------+----------+
+; Slack ; Required P2P Time ; Actual P2P Time ; From   ; To       ;
++-------+-------------------+-----------------+--------+----------+
+; N/A   ; None              ; 10.853 ns       ; SW[14] ; HEX3[6]  ;
+; N/A   ; None              ; 10.793 ns       ; SW[13] ; HEX3[6]  ;
+; N/A   ; None              ; 10.792 ns       ; SW[14] ; HEX3[5]  ;
+; N/A   ; None              ; 10.727 ns       ; SW[13] ; HEX3[5]  ;
+; N/A   ; None              ; 10.714 ns       ; SW[14] ; HEX3[0]  ;
+; N/A   ; None              ; 10.656 ns       ; SW[13] ; HEX3[0]  ;
+; N/A   ; None              ; 10.594 ns       ; SW[14] ; HEX3[4]  ;
+; N/A   ; None              ; 10.531 ns       ; SW[13] ; HEX3[4]  ;
+; N/A   ; None              ; 10.516 ns       ; SW[15] ; HEX3[6]  ;
+; N/A   ; None              ; 10.507 ns       ; SW[13] ; HEX3[3]  ;
+; N/A   ; None              ; 10.492 ns       ; SW[13] ; HEX3[1]  ;
+; N/A   ; None              ; 10.492 ns       ; SW[13] ; HEX3[2]  ;
+; N/A   ; None              ; 10.457 ns       ; SW[15] ; HEX3[5]  ;
+; N/A   ; None              ; 10.373 ns       ; SW[15] ; HEX3[0]  ;
+; N/A   ; None              ; 10.287 ns       ; SW[14] ; HEX3[3]  ;
+; N/A   ; None              ; 10.258 ns       ; SW[15] ; HEX3[4]  ;
+; N/A   ; None              ; 10.245 ns       ; SW[14] ; HEX3[1]  ;
+; N/A   ; None              ; 10.244 ns       ; SW[14] ; HEX3[2]  ;
+; N/A   ; None              ; 9.854 ns        ; SW[14] ; LEDR[14] ;
+; N/A   ; None              ; 9.828 ns        ; SW[15] ; LEDR[15] ;
+; N/A   ; None              ; 9.826 ns        ; SW[13] ; LEDR[13] ;
+; N/A   ; None              ; 7.685 ns        ; SW[9]  ; HEX2[5]  ;
+; N/A   ; None              ; 7.646 ns        ; SW[9]  ; HEX2[6]  ;
+; N/A   ; None              ; 7.573 ns        ; SW[9]  ; HEX2[4]  ;
+; N/A   ; None              ; 7.536 ns        ; SW[8]  ; HEX2[5]  ;
+; N/A   ; None              ; 7.522 ns        ; SW[8]  ; HEX2[6]  ;
+; N/A   ; None              ; 7.507 ns        ; SW[9]  ; HEX2[0]  ;
+; N/A   ; None              ; 7.497 ns        ; SW[2]  ; HEX0[0]  ;
+; N/A   ; None              ; 7.465 ns        ; SW[2]  ; HEX0[1]  ;
+; N/A   ; None              ; 7.444 ns        ; SW[2]  ; HEX0[2]  ;
+; N/A   ; None              ; 7.424 ns        ; SW[8]  ; HEX2[4]  ;
+; N/A   ; None              ; 7.409 ns        ; SW[9]  ; HEX2[2]  ;
+; N/A   ; None              ; 7.382 ns        ; SW[8]  ; HEX2[0]  ;
+; N/A   ; None              ; 7.353 ns        ; SW[9]  ; HEX2[3]  ;
+; N/A   ; None              ; 7.331 ns        ; SW[9]  ; HEX2[1]  ;
+; N/A   ; None              ; 7.271 ns        ; SW[7]  ; HEX1[0]  ;
+; N/A   ; None              ; 7.255 ns        ; SW[7]  ; HEX1[6]  ;
+; N/A   ; None              ; 7.248 ns        ; SW[2]  ; HEX0[3]  ;
+; N/A   ; None              ; 7.248 ns        ; SW[2]  ; HEX0[4]  ;
+; N/A   ; None              ; 7.227 ns        ; SW[8]  ; HEX2[3]  ;
+; N/A   ; None              ; 7.221 ns        ; SW[8]  ; HEX2[2]  ;
+; N/A   ; None              ; 7.217 ns        ; SW[11] ; HEX2[5]  ;
+; N/A   ; None              ; 7.216 ns        ; SW[2]  ; HEX0[6]  ;
+; N/A   ; None              ; 7.209 ns        ; SW[2]  ; HEX0[5]  ;
+; N/A   ; None              ; 7.204 ns        ; SW[11] ; HEX2[6]  ;
+; N/A   ; None              ; 7.192 ns        ; SW[1]  ; HEX0[0]  ;
+; N/A   ; None              ; 7.180 ns        ; SW[1]  ; HEX0[2]  ;
+; N/A   ; None              ; 7.176 ns        ; SW[8]  ; HEX2[1]  ;
+; N/A   ; None              ; 7.167 ns        ; SW[12] ; HEX3[6]  ;
+; N/A   ; None              ; 7.157 ns        ; SW[1]  ; HEX0[1]  ;
+; N/A   ; None              ; 7.117 ns        ; SW[7]  ; HEX1[5]  ;
+; N/A   ; None              ; 7.105 ns        ; SW[11] ; HEX2[4]  ;
+; N/A   ; None              ; 7.105 ns        ; SW[12] ; HEX3[5]  ;
+; N/A   ; None              ; 7.093 ns        ; SW[10] ; HEX2[5]  ;
+; N/A   ; None              ; 7.080 ns        ; SW[10] ; HEX2[6]  ;
+; N/A   ; None              ; 7.067 ns        ; SW[9]  ; LEDR[9]  ;
+; N/A   ; None              ; 7.065 ns        ; SW[11] ; HEX2[0]  ;
+; N/A   ; None              ; 7.023 ns        ; SW[12] ; HEX3[0]  ;
+; N/A   ; None              ; 6.985 ns        ; SW[7]  ; HEX1[4]  ;
+; N/A   ; None              ; 6.980 ns        ; SW[10] ; HEX2[4]  ;
+; N/A   ; None              ; 6.946 ns        ; SW[1]  ; HEX0[4]  ;
+; N/A   ; None              ; 6.939 ns        ; SW[1]  ; HEX0[3]  ;
+; N/A   ; None              ; 6.936 ns        ; SW[1]  ; HEX0[6]  ;
+; N/A   ; None              ; 6.934 ns        ; SW[10] ; HEX2[0]  ;
+; N/A   ; None              ; 6.921 ns        ; SW[1]  ; HEX0[5]  ;
+; N/A   ; None              ; 6.907 ns        ; SW[12] ; HEX3[4]  ;
+; N/A   ; None              ; 6.905 ns        ; SW[12] ; HEX3[3]  ;
+; N/A   ; None              ; 6.890 ns        ; SW[0]  ; HEX0[0]  ;
+; N/A   ; None              ; 6.881 ns        ; SW[0]  ; HEX0[2]  ;
+; N/A   ; None              ; 6.862 ns        ; SW[12] ; HEX3[2]  ;
+; N/A   ; None              ; 6.860 ns        ; SW[0]  ; HEX0[1]  ;
+; N/A   ; None              ; 6.860 ns        ; SW[12] ; HEX3[1]  ;
+; N/A   ; None              ; 6.819 ns        ; SW[10] ; HEX2[2]  ;
+; N/A   ; None              ; 6.802 ns        ; SW[4]  ; HEX1[1]  ;
+; N/A   ; None              ; 6.782 ns        ; SW[10] ; HEX2[3]  ;
+; N/A   ; None              ; 6.733 ns        ; SW[10] ; HEX2[1]  ;
+; N/A   ; None              ; 6.669 ns        ; SW[4]  ; HEX1[6]  ;
+; N/A   ; None              ; 6.655 ns        ; SW[6]  ; HEX1[1]  ;
+; N/A   ; None              ; 6.651 ns        ; SW[4]  ; HEX1[0]  ;
+; N/A   ; None              ; 6.647 ns        ; SW[0]  ; HEX0[4]  ;
+; N/A   ; None              ; 6.637 ns        ; SW[0]  ; HEX0[3]  ;
+; N/A   ; None              ; 6.637 ns        ; SW[0]  ; HEX0[6]  ;
+; N/A   ; None              ; 6.623 ns        ; SW[0]  ; HEX0[5]  ;
+; N/A   ; None              ; 6.537 ns        ; SW[4]  ; HEX1[5]  ;
+; N/A   ; None              ; 6.525 ns        ; SW[6]  ; HEX1[6]  ;
+; N/A   ; None              ; 6.513 ns        ; SW[6]  ; HEX1[0]  ;
+; N/A   ; None              ; 6.477 ns        ; SW[5]  ; HEX1[1]  ;
+; N/A   ; None              ; 6.434 ns        ; SW[8]  ; LEDR[8]  ;
+; N/A   ; None              ; 6.425 ns        ; SW[7]  ; LEDR[7]  ;
+; N/A   ; None              ; 6.388 ns        ; SW[6]  ; HEX1[5]  ;
+; N/A   ; None              ; 6.380 ns        ; SW[4]  ; HEX1[4]  ;
+; N/A   ; None              ; 6.347 ns        ; SW[5]  ; HEX1[6]  ;
+; N/A   ; None              ; 6.331 ns        ; SW[5]  ; HEX1[0]  ;
+; N/A   ; None              ; 6.313 ns        ; SW[4]  ; HEX1[3]  ;
+; N/A   ; None              ; 6.265 ns        ; SW[4]  ; HEX1[2]  ;
+; N/A   ; None              ; 6.228 ns        ; SW[6]  ; HEX1[4]  ;
+; N/A   ; None              ; 6.217 ns        ; SW[5]  ; HEX1[5]  ;
+; N/A   ; None              ; 6.193 ns        ; SW[3]  ; HEX0[0]  ;
+; N/A   ; None              ; 6.169 ns        ; SW[6]  ; HEX1[3]  ;
+; N/A   ; None              ; 6.168 ns        ; SW[6]  ; HEX1[2]  ;
+; N/A   ; None              ; 6.065 ns        ; SW[4]  ; LEDR[4]  ;
+; N/A   ; None              ; 6.056 ns        ; SW[5]  ; HEX1[4]  ;
+; N/A   ; None              ; 6.034 ns        ; SW[11] ; LEDR[11] ;
+; N/A   ; None              ; 5.989 ns        ; SW[5]  ; HEX1[3]  ;
+; N/A   ; None              ; 5.988 ns        ; SW[5]  ; HEX1[2]  ;
+; N/A   ; None              ; 5.935 ns        ; SW[2]  ; LEDR[2]  ;
+; N/A   ; None              ; 5.931 ns        ; SW[3]  ; HEX0[5]  ;
+; N/A   ; None              ; 5.911 ns        ; SW[3]  ; HEX0[4]  ;
+; N/A   ; None              ; 5.900 ns        ; SW[3]  ; HEX0[6]  ;
+; N/A   ; None              ; 5.718 ns        ; SW[10] ; LEDR[10] ;
+; N/A   ; None              ; 5.707 ns        ; SW[12] ; LEDR[12] ;
+; N/A   ; None              ; 5.611 ns        ; SW[0]  ; LEDR[0]  ;
+; N/A   ; None              ; 5.435 ns        ; SW[3]  ; LEDR[3]  ;
+; N/A   ; None              ; 5.427 ns        ; SW[6]  ; LEDR[6]  ;
+; N/A   ; None              ; 5.289 ns        ; SW[5]  ; LEDR[5]  ;
+; N/A   ; None              ; 5.234 ns        ; SW[1]  ; LEDR[1]  ;
++-------+-------------------+-----------------+--------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 6.1 Build 201 11/27/2006 SJ Web Edition
+    Info: Processing started: Wed May 02 11:55:17 2007
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off part1 -c part1 --timing_analysis_only
+Info: Longest tpd from source pin "SW[14]" to destination pin "HEX3[6]" is 10.853 ns
+    Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_U3; Fanout = 8; PIN Node = 'SW[14]'
+    Info: 2: + IC(6.206 ns) + CELL(0.437 ns) = 7.485 ns; Loc. = LCCOMB_X64_Y8_N10; Fanout = 1; COMB Node = 'bcd7seg:digit3|H[6]'
+    Info: 3: + IC(0.736 ns) + CELL(2.632 ns) = 10.853 ns; Loc. = PIN_W24; Fanout = 0; PIN Node = 'HEX3[6]'
+    Info: Total cell delay = 3.911 ns ( 36.04 % )
+    Info: Total interconnect delay = 6.942 ns ( 63.96 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Allocated 111 megabytes of memory during processing
+    Info: Processing ended: Wed May 02 11:55:18 2007
+    Info: Elapsed time: 00:00:01
+
+

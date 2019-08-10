@@ -1,0 +1,19 @@
+<internal_error>
+	<executable>quartus.exe</executable>
+	<sub_system>ERR</sub_system>
+	<callstack>Stack Trace:
+AFC_EDITOR_TEMPLATE::merge_menus + 0x96 (GCL_AFC)
+resr_rpw_dll_get_template_classes + 0x92C5 (resr_rpw)
+resr_rpw_dll_get_template_classes + 0xAE9F (resr_rpw)
+resr_rpw_get_module_handle + 0x566C (resr_rpw)
+resr_rpw_dll_get_template_classes + 0x19F0B (resr_rpw)
+
+End-trace
+</callstack>
+	<error>Current editor: RPW</error>
+	<date>Thu May 03 10:37:35 2007</date>
+	<version>Quartus II Version 6.1 Build 201 11/27/2006 SJ Web Edition</version>
+	<full_error>Fatal error detected: Access Violation
+Current editor: RPW
+Quartus II Version 6.1 Build 201 11/27/2006 SJ Web Edition </full_error>
+</internal_error>

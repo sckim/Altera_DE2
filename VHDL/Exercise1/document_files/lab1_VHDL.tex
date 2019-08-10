@@ -1,0 +1,505 @@
+\documentclass[psfig,10pt,fullpage]{article}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\oddsidemargin}{-0.75in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
+\addtolength{\evensidemargin}{0.75in}
+\raggedbottom
+\usepackage{psfig,float,times}
+
+\begin{document}
+
+~\\
+~\\
+~\\
+\centerline{\huge Laboratory Exercise 1}
+~\\
+\centerline{\large Switches, Lights, and Multiplexers}
+~\\
+~\\
+
+The purpose of this exercise is to learn how to connect simple input and
+output devices to an FPGA chip and implement a circuit that uses these devices.
+We will use the switches $SW_{17-0}$ on the DE2 board as inputs to the circuit.
+We will use light emitting diodes (LEDs) and 7-segment displays as output
+devices.
+
+~\\
+\noindent
+{\bf Part I}
+~\\
+~\\
+\noindent
+The DE2 board provides 18 toggle switches, called {\it SW}$_{17-0}$, that can be used as
+inputs to a circuit, and 18 red lights, called {\it LEDR}$_{17-0}$, that can be used to
+display output values. Figure 1 shows a simple VHDL entity that uses these switches 
+and shows their states on the LEDs. Since there are 18 switches and lights
+it is convenient to represent them as arrays in the VHDL code, as shown. We have used a
+single assignment statement for all 18 {\it LEDR} outputs, which is equivalent to the 
+individual assignments
+
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+LEDR(17) $<$= SW(17);\\
+LEDR(16) $<$= SW(16);\\
+$\ldots$\\
+LEDR(0) $<$= SW(0);
+\end{tabbing}
+\end{minipage}
+\end{center}
+The DE2 board has hardwired connections between its FPGA chip and the switches and
+lights. To use {\it SW}$_{17-0}$ and {\it LEDR}$_{17-0}$ it is necessary to include in
+your Quartus II project the correct pin assignments, which are given in the {\it DE2 
+User Manual}. For example, the manual specifies that {\it SW}$_0$ is connected to the
+FPGA pin {\it N25} and {\it LEDR}$_0$ is connected to pin {\it AE23}. A good way to
+make the required pin assignments is to import into the Quartus II software the file called
+{\it DE2\_pin\_assignments.csv}, which is provided on the {\it DE2 System CD} and 
+in the University Program section of
+Altera's web site.  The procedure for making pin assignments is described in the 
+tutorial {\it Quartus II Introduction using VHDL Design}, which is also available from
+Altera.
+
+It is important to realize that the pin assignments in the {\it DE2\_pin\_assignments.csv}
+file are useful only if the pin names given in the file are exactly the same as the port names
+used in your VHDL entity. The file uses the names {\it SW}[0] $\ldots$ {\it SW}[17] 
+and {\it LEDR}[0] $\ldots$ {\it LEDR}[17] for the switches and lights, which is the reason
+we used these names in Figure 1 (note that the Quartus II software 
+uses [ ] square brackets for array elements, while
+the VHDL syntax uses ( ) round brackets).
+
+~\\
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+LIBRARY ieee;\\
+USE ieee.std\_logic\_1164.all;\\
+~\\
+-\,- Simple module that connects the SW switches to the LEDR lights\\
+ZZ\=PORT (~\=SWZZ \=: OUTZZ\=STD\_LOGIC;\kill
+ENTITY part1 IS \\
+\>PORT (\>SW \>: IN \>STD\_LOGIC\_VECTOR(17 DOWNTO 0);\\
+\>\>LEDR \>: OUT \>STD\_LOGIC\_VECTOR(17 DOWNTO 0));  -\,- red LEDs\\
+END part1;\\
+~\\
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+ARCHITECTURE Behavior OF part1 IS\\
+BEGIN\\
+\>LEDR $<$= SW;\\
+END Behavior\\
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+\begin{center}
+Figure 1. VHDL code that uses the DE2 board switches and lights.
+\end{center}
+
+~\\
+Perform the following steps to implement a circuit corresponding to the code
+in Figure 1 on the DE2 board.
+\begin{enumerate}
+\item Create a new Quartus II project for your circuit. Select Cyclone II EP2C35F672C6
+as the target chip, which is the FPGA chip on the Altera DE2 board. 
+\item Create a VHDL entity for the code in Figure 1 and include it in your project.
+\item Include in your project the required pin assignments for the DE2 board, as discussed
+above. Compile the project.
+\item Download the compiled circuit into the FPGA chip. Test the functionality of the 
+circuit by toggling the switches and observing the LEDs.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part II}
+~\\
+~\\
+\noindent
+Figure 2$a$ shows a sum-of-products circuit that implements
+a 2-to-1 {\it multiplexer} with a select input $s$.
+If $s = 0$ the multiplexer's output $m$ is equal to the input $x$, and if $s=1$ the
+output is equal to $y$. Part $b$ of the figure gives a truth table for this
+multiplexer, and part $c$ shows its circuit symbol. 
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure1.2.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 2.  A 2-to-1 multiplexer.}
+~\\
+~\\
+
+The multiplexer can be described by the following VHDL statement:
+
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+m $<$= (NOT (s) AND x) OR (s AND y);
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+You are to write a VHDL entity that includes eight
+assignment statements like the one shown above to describe the circuit given in Figure
+3$a$. This circuit has two eight-bit inputs, $X$ and $Y$, and produces the eight-bit output
+$M$. If $s=0$ then $M = X$, while if $s=1$ then $M=Y$. We refer to this circuit as an eight-bit
+wide 2-to-1 multiplexer. It has the circuit symbol shown in Figure 3$b$, in which $X$,
+$Y$, and $M$ are depicted as eight-bit wires. Perform the steps shown below.
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure1.3.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 3.  An eight-bit wide 2-to-1 multiplexer.}
+~\\
+
+\begin{enumerate}
+\item Create a new Quartus II project for your circuit.
+\item Include your VHDL file for the eight-bit wide 2-to-1 multiplexer 
+in your project. Use switch {\it SW}$_{17}$ on the DE2 board as the $s$ input, switches
+{\it SW}$_{7-0}$ as the $X$ input and 
+{\it SW}$_{15-8}$ as the $Y$ input. Connect the {\it SW} switches
+to the red lights {\it LEDR} and connect the output $M$ to the green lights {\it LEDG}$_{7-0}$.
+\item Include in your project the required pin assignments for the DE2 board. As discussed
+in Part I, these 
+assignments ensure that the input ports of your VHDL code will use the pins on the Cyclone 
+II FPGA that are connected to the {\it SW} switches, and the output ports of your VHDL code
+will use the FPGA pins connected to the {\it LEDR} and {\it LEDG} lights. 
+\item Compile the project.
+\item Download the compiled circuit into the FPGA chip. Test the functionality of the 
+eight-bit wide 2-to-1 multiplexer by toggling the switches and observing the LEDs.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part III}
+
+~\\
+\noindent
+In Figure 2 we showed a 2-to-1 multiplexer that selects between the two inputs {\it x} and {\it
+y}. For this part consider a circuit in which the output {\it m} has to be selected from
+five inputs $u$, $v$, $w$, $x$, and $y$. Part $a$ of Figure 4 shows how we can build the
+required 5-to-1 multiplexer by using four 2-to-1 multiplexers. The circuit uses a 3-bit
+select input $s_2 s_1 s_0$ and implements the truth table shown in Figure 4$b$. A circuit
+symbol for this multiplexer is given in part $c$ of the figure. 
+
+Recall from Figure 3
+that an eight-bit wide 2-to-1 multiplexer can be built by using eight instances of a 2-to-1
+multiplexer. Figure 5 applies this concept to define a three-bit wide 5-to-1 multiplexer. It
+contains three instances of the circuit in Figure 4$a$.
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure1.4.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 4.  A 5-to-1 multiplexer.}
+~\\
+
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure1.5.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 5.  A three-bit wide 5-to-1 multiplexer.}
+~\\
+
+Perform the following steps to implement the three-bit wide 5-to-1 multiplexer.
+\begin{enumerate}
+\item Create a new Quartus II project for your circuit.
+\item Create a VHDL entity for the three-bit wide 5-to-1 multiplexer. Connect its select
+inputs to switches {\it SW}$_{17-15}$, and use the remaining 15 switches SW$_{14-0}$ to
+provide the five 3-bit inputs $U$ to $Y$. Connect the {\it SW} switches
+to the red lights {\it LEDR} and connect the output $M$ to the green lights {\it LEDG}$_{2-0}$.
+\item Include in your project the required pin assignments for the DE2 board.
+Compile the project.
+\item Download the compiled circuit into the FPGA chip. Test the functionality of the 
+three-bit wide 5-to-1 multiplexer by toggling the switches and observing the LEDs. Ensure
+that each of the inputs $U$ to $Y$ can be properly selected as the output $M$.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part IV}
+
+~\\
+\noindent
+Figure 6 shows a {\it 7-segment} decoder module that has the three-bit input $c_2 c_1
+c_0$. This decoder produces seven outputs that are used to display a character on a
+7-segment display. Table 1 lists the characters that should be displayed for each
+valuation of $c_2 c_1 c_0$. To keep the design simple, only four characters
+are included in the table (plus the `blank' character, which is selected for codes
+$100-111$).
+
+The seven segments in the display are identified by the indices 0 to 6 shown in the
+figure. Each segment is illuminated by driving it to the logic value 0. You are to write a
+VHDL entity that implements logic functions that represent circuits needed to activate
+each of the seven segments. Use only
+simple VHDL assignment statements in your code to specify each logic function using a
+Boolean expression. 
+
+~\\
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure1.6.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 6.  A 7-segment decoder.}
+~\\
+
+~\\
+\begin{center}
+\begin{tabular}{l|c}
+$c_2 c_1 c_0$ & Character \\ \hline
+\hspace{0.75 mm} {\rule[0mm]{0mm}{5mm}000} & H\\ 
+\hspace{0.75 mm} 001 & E\\
+\hspace{0.75 mm} 010 & L\\
+\hspace{0.75 mm} 011 & O\\
+\hspace{0.75 mm} 100 & \\
+\hspace{0.75 mm} 101 & \\
+\hspace{0.75 mm} 110 & \\
+\hspace{0.75 mm} 111 & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+Table 1. Character codes.
+\end{center}
+
+~\\
+Perform the following steps:
+
+\begin{enumerate}
+\item Create a new Quartus II project for your circuit.
+\item Create a VHDL entity for the 7-segment decoder. Connect the $c_2 c_1 c_0$ inputs
+to switches {\it SW}$_{2-0}$, and connect the outputs of the decoder to the {\it HEX0} 
+display on the DE2 board. The segments in this display are called 
+{\it HEX0}$_0$, {\it HEX0}$_1$, $\ldots$, {\it HEX0}$_6$, corresponding to Figure 6.
+You should declare the 7-bit port 
+
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+HEX0 : OUT STD\_LOGIC\_VECTOR(0 TO 6);
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+in your VHDL code so that the
+names of these outputs match the corresponding names in the {\it DE2 User Manual} and the 
+{\it DE2\_pin\_assignments.csv} file.
+\item After making the required DE2 board pin assignments, compile the project.
+\item Download the compiled circuit into the FPGA chip. Test the functionality of the 
+circuit by toggling the {\it SW}$_{2-0}$ switches and observing the 7-segment display.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part V}
+
+~\\
+\noindent
+Consider the circuit shown in Figure 7. It uses a three-bit wide 5-to-1 multiplexer to
+enable the selection of five characters that are displayed on a 7-segment display. Using the
+7-segment decoder from Part IV this circuit can display any of the characters H, E, L, O,
+and `blank'. The character codes are set according to Table 1 by using the switches 
+{\it SW}$_{14-0}$, and a specific character is selected for display by setting the
+switches {\it SW}$_{17-15}$.
+
+An outline of the VHDL code that represents this circuit is 
+provided in Figure 8. Note that we have
+used the circuits from Parts III and IV as subcircuits in this code. You are to
+extend the code in Figure 8 so that it uses five 7-segment displays rather than just one.
+You will need to use five instances of each of the subcircuits. The
+purpose of your circuit is to display any word on the five displays that is composed of the
+characters in Table 1, and be able to rotate this word in a circular fashion across the
+displays when the switches {\it SW}$_{17-15}$ are toggled. As an example,
+if the displayed word is HELLO, then your circuit should produce the output patterns
+illustrated in Table 2.
+
+~\\
+\begin{figure}[H]
+\scriptsize
+\centerline{
+\hbox{\psfig{figure=figure1.7.eps}}}
+\end{figure}
+~\\
+\centerline{Figure 7.  A circuit that can select and display one of five characters.}
+~\\
+
+~\\
+\begin{center}
+\begin{minipage}[t]{12.5 cm}
+\begin{tabbing}
+LIBRARY ieee;\\
+USE ieee.std\_logic\_1164.all;\\
+~\\
+ZZ\=PORT (~\=SWZZ \=: OUTZZ\=STD\_LOGIC;\kill
+ENTITY part5 IS \\
+\>PORT (\>SW \>: IN \>STD\_LOGIC\_VECTOR(17 DOWNTO 0);\\
+\>\>HEX0	\>: OUT \>STD\_LOGIC\_VECTOR(0 TO 6));\\
+END part5;\\
+~\\
+ARCHITECTURE Behavior OF part5 IS\\
+ZZ\=ZZ\=PORT (~\=S, U, V, W, X, YZZ \=: OUTZZ\=STD\_LOGIC;\kill
+\>COMPONENT mux\_3bit\_5to1\\
+\>\>PORT (\>S, U, V, W, X, Y	\>: IN \>STD\_LOGIC\_VECTOR(2 DOWNTO 0);\\
+\>\>\>M \>: OUT \>STD\_LOGIC\_VECTOR(2 DOWNTO 0));\\
+\>END COMPONENT;\\
+ZZ\=ZZ\=PORT (~\=DisplayZZ \=: OUTZZ\=STD\_LOGIC;\kill
+\>COMPONENT char\_7seg\\
+\>\>PORT (\>C \>: IN	\>STD\_LOGIC\_VECTOR(2 DOWNTO 0);\\
+\>\>\>Display \>: OUT \>STD\_LOGIC\_VECTOR(0 TO 6));\\
+\>END COMPONENT;\\
+ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\=ZZ\kill
+\>SIGNAL M : STD\_LOGIC\_VECTOR(2 DOWNTO 0);\\
+BEGIN\\
+\>M0: mux\_3bit\_5to1 PORT MAP (SW(17 DOWNTO 15), SW(14 DOWNTO 12), SW(11 DOWNTO 9),\\
+\>\>SW(8 DOWNTO 6), SW(5 DOWNTO 3), SW(2 DOWNTO 0), M);\\
+\>H0: char\_7seg PORT MAP (M, HEX0);\\
+END Behavior;\\
+~\\
+LIBRARY ieee;\\
+USE ieee.std\_logic\_1164.all;\\
+~\\
+-\,- implements a 3-bit wide 5-to-1 multiplexer\\
+ZZ\=PORT (~\=S, U, V, W, X, YZZ \=: OUTZZ\=STD\_LOGIC;\kill
+ENTITY mux\_3bit\_5to1 IS\\
+\>PORT (\>S, U, V, W, X, Y	\>: IN \>STD\_LOGIC\_VECTOR(2 DOWNTO 0);\\
+\>\>M	\>: OUT \>STD\_LOGIC\_VECTOR(2 DOWNTO 0));\\
+END mux\_3bit\_5to1;\\
+~\\
+ARCHITECTURE Behavior OF mux\_3bit\_5to1 IS\\
+~\\
+\>$\ldots$ code not shown\\
+~\\
+END Behavior;\\
+~\\
+LIBRARY ieee;\\
+USE ieee.std\_logic\_1164.all;\\
+~\\
+ZZ\=PORT (~\=DisplayZZ \=: OUTZZ\=STD\_LOGIC;\kill
+ENTITY char\_7seg IS\\
+\>PORT (\>C \>: IN \>STD\_LOGIC\_VECTOR(2 DOWNTO 0);\\
+\>\>Display	\>: OUT \>STD\_LOGIC\_VECTOR(0 TO 6));\\
+END char\_7seg;\\
+~\\
+ARCHITECTURE Behavior OF char\_7seg IS\\
+~\\
+\>$\ldots$ code not shown\\
+~\\
+END Behavior;
+\end{tabbing}
+\end{minipage}
+\end{center}
+
+\begin{center}
+Figure 8. VHDL code for the circuit in Figure 7.
+\end{center}
+
+~\\
+\begin{center}
+\begin{tabular}{l|ccccc}
+{\it SW}$_{17}$ {\it SW}$_{16}$ {\it SW}$_{15}$ & \multicolumn{5}{c}{Character pattern} \\
+\hline
+\hspace{8.0 mm} {\rule[0mm]{0mm}{5mm}000} & H & E & L & L & O\\ 
+\hspace{8.0 mm} 001 & E & L & L & O & H\\
+\hspace{8.0 mm} 010 & L & L & O & H & E\\
+\hspace{8.0 mm} 011 & L & O & H & E & L\\
+\hspace{8.0 mm} 100 & O & H & E & L & L\\
+\end{tabular}
+\end{center}
+
+\begin{center}
+Table 2. Rotating the word HELLO on five displays.
+\end{center}
+~\\
+
+Perform the following steps.
+\begin{enumerate}
+\item Create a new Quartus II project for your circuit.
+\item Include your VHDL entity in the Quartus II project. Connect the switches 
+{\it SW}$_{17-15}$ to the select inputs of each of the five instances of the three-bit 
+wide 5-to-1 multiplexers. Also connect {\it SW}$_{14-0}$ to each instance of the
+multiplexers as required to produce the patterns of characters shown in Table 2.
+Connect the outputs of the five multiplexers to the 7-segment displays {\it HEX4}, 
+{\it HEX3}, {\it HEX2}, {\it HEX1}, and {\it HEX0}.
+\item Include the required pin assignments for the DE2 board for all switches, LEDs, 
+and 7-segment displays. Compile the project.
+\item Download the compiled circuit into the FPGA chip. Test the functionality of the 
+circuit by setting the proper character codes on the switches SW$_{14-0}$ and then 
+toggling {\it SW}$_{17-15}$ to observe the rotation of the characters.
+\end{enumerate}
+
+~\\
+\noindent
+{\bf Part VI}
+
+~\\
+\noindent
+Extend your design from Part V so that is uses all eight 7-segment displays on the DE2
+board. Your circuit should be able to display words with five (or fewer) characters 
+on the eight displays, and rotate the displayed word when the switches {\it SW}$_{17-15}$ 
+are toggled. If the displayed word is HELLO, then your circuit should produce the patterns 
+shown in Table 3.
+
+~\\
+\begin{center}
+\begin{tabular}{l|cccccccc}
+{\it SW}$_{17}$ {\it SW}$_{16}$ {\it SW}$_{15}$ & \multicolumn{8}{c}{Character pattern} \\
+\hline
+\hspace{8.0 mm} {\rule[0mm]{0mm}{5mm}000} &  &  &  & H & E & L & L & O\\ 
+\hspace{8.0 mm} 001 &  &  & H & E & L & L & O & \\
+\hspace{8.0 mm} 010 &  & H & E & L & L & O &  & \\
+\hspace{8.0 mm} 011 & H & E & L & L & O &  &  & \\
+\hspace{8.0 mm} 100 & E & L & L & O &  &  &  & H\\
+\hspace{8.0 mm} 101 & L & L & O &  &  &  & H & E\\
+\hspace{8.0 mm} 110 & L & O &  &  &  & H & E & L\\
+\hspace{8.0 mm} 111 & O &  &  &  & H & E & L & L\\
+\end{tabular}
+\end{center}
+
+\begin{center}
+Table 3. Rotating the word HELLO on eight displays.
+\end{center}
+~\\
+~\\
+
+Perform the following steps:
+\begin{enumerate}
+\item Create a new Quartus II project for your circuit and select as the target chip the 
+Cyclone II EP2C35F672C6.
+\item Include your VHDL entity in the Quartus II project. Connect the switches 
+{\it SW}$_{17-15}$ to the select inputs of each instance of the 
+multiplexers in your circuit. Also connect {\it SW}$_{14-0}$ to each instance of the
+multiplexers as required to produce the patterns of characters shown in Table 3. (Hint: for some
+inputs of the multiplexers you will want to select the `blank' character.)
+Connect the outputs of your multiplexers to the 7-segment displays {\it HEX7}, $\ldots$, 
+{\it HEX0}.
+\item Include the required pin assignments for the DE2 board for all switches, LEDs, 
+and 7-segment displays. Compile the project.
+\item Download the compiled circuit into the FPGA chip. Test the functionality of the 
+circuit by setting the proper character codes on the switches SW$_{14-0}$ and then 
+toggling {\it SW}$_{17-15}$ to observe the rotation of the characters.
+\end{enumerate}
+
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+~\\
+Copyright \copyright 2006 Altera Corporation. 
+
+\end{document}

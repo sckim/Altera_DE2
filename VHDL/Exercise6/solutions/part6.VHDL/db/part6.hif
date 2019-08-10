@@ -1,0 +1,234 @@
+Version 6.1 Build 201 11/27/2006 SJ Web Edition
+11
+867
+OFF
+OFF
+OFF
+OFF
+OFF
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Partition --
+-- End Partition --
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+part6
+# storage
+db|part6.(0).cnf
+db|part6.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part6.vhd
+8257708abf3298a1fcc730881d30b32f
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+|
+}
+# end
+# entity
+regn
+# storage
+db|part6.(1).cnf
+db|part6.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part6.vhd
+8257708abf3298a1fcc730881d30b32f
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+n
+8
+PARAMETER_SIGNED_DEC
+USR
+ constraint(r)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(q)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+regn:U_A
+regn:U_B
+}
+# end
+# entity
+fa
+# storage
+db|part6.(2).cnf
+db|part6.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part6.vhd
+8257708abf3298a1fcc730881d30b32f
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# hierarchies {
+fa:b1_a0
+fa:b1_a1
+fa:b1_a2
+fa:b1_a3
+fa:b1_a4
+fa:b1_a5
+fa:b1_a6
+fa:b1_a7
+fa:b2_a0
+fa:b2_a1
+fa:b2_a2
+fa:b2_a3
+fa:b2_a4
+fa:b2_a5
+fa:b2_a6
+fa:b2_a7
+fa:b3_a0
+fa:b3_a1
+fa:b3_a2
+fa:b3_a3
+fa:b3_a4
+fa:b3_a5
+fa:b3_a6
+fa:b3_a7
+fa:b4_a0
+fa:b4_a1
+fa:b4_a2
+fa:b4_a3
+fa:b4_a4
+fa:b4_a5
+fa:b4_a6
+fa:b4_a7
+fa:b5_a0
+fa:b5_a1
+fa:b5_a2
+fa:b5_a3
+fa:b5_a4
+fa:b5_a5
+fa:b5_a6
+fa:b5_a7
+fa:b6_a0
+fa:b6_a1
+fa:b6_a2
+fa:b6_a3
+fa:b6_a4
+fa:b6_a5
+fa:b6_a6
+fa:b6_a7
+fa:b7_a0
+fa:b7_a1
+fa:b7_a2
+fa:b7_a3
+fa:b7_a4
+fa:b7_a5
+fa:b7_a6
+fa:b7_a7
+}
+# end
+# entity
+regn
+# storage
+db|part6.(3).cnf
+db|part6.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part6.vhd
+8257708abf3298a1fcc730881d30b32f
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+n
+16
+PARAMETER_SIGNED_DEC
+USR
+ constraint(r)
+15 downto 0
+PARAMETER_STRING
+USR
+ constraint(q)
+15 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+regn:U_P
+}
+# end
+# entity
+hex7seg
+# storage
+db|part6.(4).cnf
+db|part6.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+part6.vhd
+8257708abf3298a1fcc730881d30b32f
+4
+# internal_option {
+AUTO_RESOURCE_SHARING
+OFF
+}
+# user_parameter {
+ constraint(hex)
+3 downto 0
+PARAMETER_STRING
+USR
+ constraint(display)
+0 to 6
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+hex7seg:digit_7
+hex7seg:digit_6
+hex7seg:digit_5
+hex7seg:digit_4
+hex7seg:digit_3
+hex7seg:digit_2
+hex7seg:digit_1
+hex7seg:digit_0
+}
+# end
+# complete
+
